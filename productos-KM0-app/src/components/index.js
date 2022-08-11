@@ -1,1 +1,1 @@
-// This will contain all the components' exports
+export { default as PrimaryButton } from "./primary-button";
