@@ -1,11 +1,52 @@
+import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View, Text } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+// Componente slides
+import Sliders from './src/screens/Sliders';
+import LoginPage from './src/screens/Login';
+
+const LoadingComponent = () => { 
+  return(
+    <View style={{
+      flex: 1, justifyContent: 'center', alignItems: 'center'
+    }}>
+      <ActivityIndicator color='#FF8F15' size="large" />
+    </View>
+  )
+}
 
 export default function App() {
+
+  const [ loading, setLoading ] = useState(true);
+  const [ isFirstTime, setIsFirstTime ] = useState(false);
+
+  useEffect(() => {
+    checkOnboarding()
+  },[])
+
+  const checkOnboarding = async () => {
+
+    try {
+      const result = await AsyncStorage.getItem('$firstTime')
+      if(!result){
+        setIsFirstTime(true);
+      }
+    } catch (error) {
+      console.log(error, 'unable to get item')
+    }
+
+    setLoading(false);
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+
+      
+      {
+        loading ? <LoadingComponent /> : isFirstTime ? <Sliders /> : <LoginPage />
+      }
+      
     </View>
   );
 }
