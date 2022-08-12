@@ -1,7 +1,9 @@
 import { useFonts } from "expo-font";
 
 import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { PrimaryButton } from "./src/components";
+import { PrimaryButton, CustomInput } from "./src/components";
+import { AntDesign } from "@expo/vector-icons";
+import MainNavigator from "./src/navigation/main";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -18,11 +20,8 @@ export default function App() {
   if (!loaded) {
     return <ActivityIndicator />;
   }
-  return (
-    <View style={styles.container}>
-      <PrimaryButton style={{ width: "100%" }} title="Over write " />
-    </View>
-  );
+  const leftIcon = <AntDesign name="stepforward" size={24} color="black" />;
+  return <MainNavigator />;
 }
 
 const styles = StyleSheet.create({

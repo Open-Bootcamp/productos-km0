@@ -6,7 +6,7 @@ import { colors } from "../../themes";
 
 const PrimaryButton = ({ onPress, style, title = "Default value" }) => {
   return (
-    <TouchableOpacity style={{ ...style }}>
+    <TouchableOpacity onPress={onPress} style={{ ...style }}>
       <LinearGradient
         colors={[colors.gradientGreen.primary, colors.gradientGreen.secondary]}
         start={[0, 0]}
