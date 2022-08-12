@@ -34,3 +34,4 @@ const MainStack = () => {
 
 // Importamos el mainstack a la app.js para que sea lo primero en renderizar
 export default MainStack;
+
