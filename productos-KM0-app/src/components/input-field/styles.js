@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   input: {
     backgroundColor: colors.inputFieldBackground,
     borderRadius: 20,
-    paddingVertical: 15,
+    paddingVertical: 20,
     paddingHorizontal: 15,
     width: "50%",
   },

@@ -8,7 +8,7 @@ export const colors = {
     secondary: "#F2BE1f",
   },
   textPrimary: "#FFFFFF",
-  textSecondary: "##222222",
+  textSecondary: "#222222",
   textError: "#ED3A3A",
   textQuestion: "#FF8F15",
   inputFieldBackground: "#D4DDEA",
