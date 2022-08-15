@@ -16,7 +16,6 @@ const Sliders = () => {
             
             await AsyncStorage.setItem('$firstTime', 'true')
             // TODO agregar navegacion para login o creacion de cuenta
-            console.log('Navegar a iniciar sesion, y cerrar el onboarding')
         }
     }
     const renderItem = (item) => {
