@@ -9,8 +9,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   text: {
-    fontSize: font.b1.size,
-    fontWeight: font.b1.weight,
+    ...font.b1,
     fontFamily: "Inter-Medium",
     color: colors.textPrimary,
   },

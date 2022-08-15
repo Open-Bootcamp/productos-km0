@@ -1,14 +1,14 @@
 export const font = {
   h1: {
-    size: 24,
-    weight: "700",
+    fontSize: 24,
+    fontWeight: "700",
   },
   b1: {
-    size: 16,
-    weight: "500",
+    fontSize: 16,
+    fontWeight: "500",
   },
   b2: {
-    size: 14,
-    weight: "500",
+    fontSize: 14,
+    fontWeight: "500",
   },
 };
