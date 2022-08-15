@@ -3,7 +3,7 @@ import { font } from "../../themes/font";
 import React from "react";
 import FormUser from "../../components/form-user-register";
 
-const ProductorRegister = () => {
+const CompradorRegister = () => {
   return (
     <View style={{ height: "100%", justifyContent: "center" }}>
       <View style={styles.styleView}>
@@ -17,7 +17,7 @@ const ProductorRegister = () => {
         <View>
           <Image
             style={styles.imgStyle}
-            source={require("../../imgs/agricultor.png")}
+            source={require("../../imgs/comprador4.png")}
           />
         </View>
       </View>
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 15,
     paddingTop: 10,
-    marginTop: 50,
   },
   imgStyle: {
     width: 100,
@@ -43,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductorRegister;
+export default CompradorRegister;
