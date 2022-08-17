@@ -1,5 +1,4 @@
 // Hooks a utilizar
-
 import React, { useState } from "react";
 // Componentes de react native que utilizaremos para maquetar
 import { Text, View, TextInput, Pressable, Image } from "react-native";
@@ -16,7 +15,7 @@ import validator from "../../validations/validator";
 const HomeScreen = (props) => {
   // Mediante esta constante manejamos el error
   const [erroMessage, setErrorMessage] = useState(false);
-  //
+  // navigation extraida para poder movernos entre vistas
   const { navigation } = props;
   // Aqui guardaremos y modificaremos el valor del input password
   const [password, setPassword] = useState("");
