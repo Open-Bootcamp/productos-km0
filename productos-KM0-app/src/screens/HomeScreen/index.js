@@ -32,83 +32,54 @@ const HomeScreen = (props) => {
         <Text style={HomeScrenStyle.titleSecondary}>KM-0</Text>
         {/* Mediante el valor de verda de la constante "secure" modiuficaremos el icono de eye 
         que se muestra en el input password */}
-        {secure ? (
-          <>
-            <Octicons
-              name="eye"
-              size={18}
-              style={HomeScrenStyle.iconEye}
-              onPress={() => {
-                setSecure(!secure);
-              }}
-            />
-          </>
-        ) : (
-          <>
-            <Octicons
-              name="eye-closed"
-              size={18}
-              color="black"
-              style={HomeScrenStyle.iconEye}
-              onPress={() => {
-                setSecure(!secure);
-              }}
-            />
-          </>
-        )}
+
+        <Octicons
+          name={secure ? "eye" : "eye-closed"}
+          size={18}
+          color="black"
+          style={HomeScrenStyle.iconEye}
+          onPress={() => {
+            setSecure(!secure);
+          }}
+        />
+
         {/* El icono de key por el contrario se mantiene constante */}
         <Octicons name="key" size={18} style={HomeScrenStyle.iconKey} />
         {/* Aqui retornaremos el valor de error que obtengamos de suceder una validacion erronea de los campos */}
         <Text style={HomeScrenStyle.errorPassword}>{erroMessage}</Text>
         {/* Mediante la existencia de un mensaje de error que devuelve la funcion validadora
         renderizaremos un conjunto u otro de inputs con difernetes estilos que marcaran si hubo un error */}
-        {erroMessage ? (
-          <>
-            {/* Dentro de los TextInputs encontraremos una funcion que escuchara y traera los cambios
-           de valor del mismo campo y a la vez seteara el estado de cada uno de los campos*/}
-            <TextInput
-              style={HomeScrenStyle.inputText1Error}
-              placeholder={"Correo electronico"}
-              onChangeText={(text) => {
-                setEmail(text);
-              }}
-              value={email}
-            />
-            {/* El valor de verdad de "secure" modificara la propiedad secureTextEntry la cual se encarga de
-            mostrar el texto encriptado del input password */}
-            <TextInput
-              style={HomeScrenStyle.inputText2Error}
-              placeholder={"Contrasena"}
-              secureTextEntry={secure}
-              onChangeText={(text) => {
-                setPassword(text);
-              }}
-              value={password}
-            />
-          </>
-        ) : (
-          <>
-            <TextInput
-              style={HomeScrenStyle.inputText1}
-              placeholder={"Correo electronico"}
-              onChangeText={(text) => {
-                setEmail(text);
-              }}
-              value={email}
-            />
 
-            <TextInput
-              style={HomeScrenStyle.inputText2}
-              placeholder={"Contrasena"}
-              secureTextEntry={secure}
-              keyboardType={"ascii-capable"}
-              onChangeText={(text) => {
-                setPassword(text);
-              }}
-              value={password}
-            />
-          </>
-        )}
+        {/* Dentro de los TextInputs encontraremos una funcion que escuchara y traera los cambios
+           de valor del mismo campo y a la vez seteara el estado de cada uno de los campos*/}
+        <TextInput
+          style={
+            erroMessage
+              ? HomeScrenStyle.inputText1Error
+              : HomeScrenStyle.inputText1
+          }
+          placeholder={"Correo electronico"}
+          onChangeText={(text) => {
+            setEmail(text);
+          }}
+          value={email}
+        />
+        {/* El valor de verdad de "secure" modificara la propiedad secureTextEntry la cual se encarga de
+            mostrar el texto encriptado del input password */}
+        <TextInput
+          style={
+            erroMessage
+              ? HomeScrenStyle.inputText2Error
+              : HomeScrenStyle.inputText2
+          }
+          placeholder={"Contrasena"}
+          secureTextEntry={secure}
+          onChangeText={(text) => {
+            setPassword(text);
+          }}
+          value={password}
+        />
+
         {/* Este pressable es el encargado de enviar los valores de cada input.
       Contiene un operador ternario el cual verifica la existencia de ambos campos:
                   

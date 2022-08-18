@@ -24,7 +24,7 @@ const schemaPassword = yup
 
 const schemaEmail = yup
   .string()
-  .email("Invalid email", "Correo ingresado invalido")
+  .email( "Correo ingresado invalido")
   .required();
 
 // Esta sera nuetra funcion validadora la cual contara con dos parametros
