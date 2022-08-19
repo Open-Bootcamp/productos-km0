@@ -18,8 +18,14 @@
 |
 */
 
+import './routes/calendars.routes'
+import './routes/messages.routes'
+import './routes/products.routes'
+import './routes/reviews.routes'
+import './routes/roles.routes'
+import './routes/transactions.routes'
+import './routes/users.routes'
+
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.get('/healthcheck', async () => ({ status: 200 }))
