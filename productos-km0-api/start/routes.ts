@@ -18,14 +18,23 @@
 |
 */
 
-import './routes/calendars.routes'
-import './routes/messages.routes'
-import './routes/products.routes'
-import './routes/reviews.routes'
-import './routes/roles.routes'
-import './routes/transactions.routes'
-import './routes/users.routes'
-
 import Route from '@ioc:Adonis/Core/Route'
+import CalendarRoutes from './routes/calendars.routes'
+import MessagesRoutes from './routes/messages.routes'
+import ProductsRoutes from './routes/products.routes'
+import ReviewsRoutes from './routes/reviews.routes'
+import RolesRoutes from './routes/roles.routes'
+import TransactionRoutes from './routes/transactions.routes'
+import UsersRoutes from './routes/users.routes'
 
-Route.get('/healthcheck', async () => ({ status: 200 }))
+Route.group(() => {
+  CalendarRoutes()
+  MessagesRoutes()
+  ProductsRoutes()
+  ReviewsRoutes()
+  RolesRoutes()
+  TransactionRoutes()
+  UsersRoutes()
+})
+  .prefix('v1')
+  .as('api')
