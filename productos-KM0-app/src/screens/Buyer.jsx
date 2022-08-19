@@ -1,8 +1,15 @@
 import React from 'react'
 import { SafeAreaView, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import Chat from './Chat'
+import Perfil from './Perfil'
+import { Productors } from '../modules/buyer'
+
 const Buyer = () => {
   const { width } = Dimensions.get('window')
+  const Tab = createMaterialTopTabNavigator()
+
   return (
     <SafeAreaView style={ styles.container }>
       <View style={{ backgroundColor: '#F8AA1B', width, height: '15%', padding: 18, justifyContent: 'center' }}>
@@ -18,8 +25,49 @@ const Buyer = () => {
           </View>
         </TouchableOpacity>
       </View>
-      <View style={{ backgroundColor: 'white', flexDirection: 'row', justifyContent: 'space-between', padding: 18 }}>
-        <TouchableOpacity>
+      <Tab.Navigator
+        initialRouteName='Productors'
+        screenOptions={{
+          tabBarActiveTintColor: '#2EC691',
+          tabBarStyle: { height: '10%' }
+        }}
+      >
+        <Tab.Screen
+          name="Productors"
+          component={Productors}
+          options={{
+            tabBarLabel: 'Productores',
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="person-outline" size={25} color={color} />
+            ),
+            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: 0 }
+          }}
+        />
+        <Tab.Screen
+          name="Chat"
+          component={Chat}
+          options={{
+            tabBarLabel: 'Productos',
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="cube-outline" size={25} color={color} />
+            ),
+            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: 0 }
+          }}
+        />
+        <Tab.Screen
+          name="Perfil"
+          component={Perfil }
+          options={{
+            tabBarLabel: 'Ubicación',
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="map-outline" size={25} color={color} />
+            ),
+            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: 0 }
+          }}
+        />
+      </Tab.Navigator>
+      {/* <View style={{ backgroundColor: 'white', flexDirection: 'row', justifyContent: 'space-between', padding: 18 }}> */}
+        {/* <TouchableOpacity>
           <Icon name="person-outline" size={25} color="#2EC691" >
             <Text>Productores</Text>
           </Icon>
@@ -33,29 +81,9 @@ const Buyer = () => {
           <Icon name="map-outline" size={25} color="gray">
             <Icon name="list-outline" size={25} color="gray" />
           </Icon>
-        </TouchableOpacity>
-      </View>
-      <View style={{ backgroundColor: 'gray', flex: 1, padding: 18, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Mapa</Text>
-      </View>
-      <View style={{ backgroundColor: 'white', padding: 18, height: '15%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-        <TouchableOpacity style={{ alignItems: 'center' }}>
-          <Icon name="home-outline" size={50} color="#2EC691" />
-          <Text style={{ color: '#2EC691', fontSize: 15, fontWeight: 'bold', marginLeft: 0 }}>Inicio</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={{ alignItems: 'center' }}>
-          <Icon name="calendar-outline" size={50} color="#F8AA1B" />
-          <Text style={{ color: '#F8AA1B', fontSize: 15, fontWeight: 'bold', marginLeft: 0 }}>Calendario</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name="chatbox-ellipses-outline" size={50} color="#F8AA1B" />
-          <Text style={{ color: '#F8AA1B', fontSize: 15, fontWeight: 'bold', marginLeft: 8 }}>Chat</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name="person-outline" size={50} color="#F8AA1B" />
-          <Text style={{ color: '#F8AA1B', fontSize: 15, fontWeight: 'bold', marginLeft: 8 }}>Perfil</Text>
-        </TouchableOpacity>
-      </View>
+        </TouchableOpacity> */}
+      {/* </View> */}
+
     </SafeAreaView>
   )
 }

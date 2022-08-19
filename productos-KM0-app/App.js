@@ -1,20 +1,11 @@
-import { StatusBar as ExpoStatusBar } from 'expo-status-bar'
-import { StyleSheet, View } from 'react-native'
-import Buyer from './src/screens/Buyer'
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
 
+import Navigation from './src/navigation/navigation'
 export default function App () {
   return (
-    <View style={ styles.container }>
-      <Buyer />
-    </View>
+    <NavigationContainer>
+      <Navigation />
+    </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
