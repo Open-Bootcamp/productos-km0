@@ -43,3 +43,9 @@ if we want after refresh run all seeders enter this:
 or seed an given file
 
 `node ace db:seed --files "./database/seeders/<model>.ts"`
+
+## Factories
+
+[pls read deep docs](https://docs.adonisjs.com/guides/models/factories)
+
+`node ace make:factory <model>`
