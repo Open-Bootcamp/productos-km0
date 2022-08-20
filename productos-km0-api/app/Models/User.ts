@@ -9,10 +9,10 @@ export default class User extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column({ serializeAs: null })
+  @column()
   public fullname: string
 
-  @column({ serializeAs: null })
+  @column()
   public username: string
 
   @column({ serializeAs: null })

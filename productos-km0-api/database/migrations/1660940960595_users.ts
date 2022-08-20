@@ -11,7 +11,7 @@ export default class UsersSchema extends BaseSchema {
       table.string('username', 255).notNullable().unique()
       table.string('password', 180).notNullable()
       table.string('email', 255).notNullable().unique()
-      table.point('location').notNullable()
+      table.string('address').notNullable()
       table.double('range_distance').notNullable()
       table.string('picture').nullable()
       table.string('status').notNullable().defaultTo(1)
