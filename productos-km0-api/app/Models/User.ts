@@ -1,13 +1,14 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import Database from '@ioc:Adonis/Lucid/Database'
-import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
+import { v4 as uuid } from 'uuid'
+import { column, beforeSave, BaseModel, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
+import Role from './Role'
 
 export default class User extends BaseModel {
   public static selfAssignPrimaryKey = true
 
   @column({ isPrimary: true })
-  public id: number
+  public id: string
 
   @column()
   public fullname: string
@@ -20,6 +21,12 @@ export default class User extends BaseModel {
 
   @column()
   public email: string
+
+  @column()
+  public roleId: string
+
+  @belongsTo(() => Role)
+  public role: BelongsTo<typeof Role>
 
   @column()
   public address: string
@@ -44,6 +51,7 @@ export default class User extends BaseModel {
 
   @beforeSave()
   public static async hashPassword(User: User) {
+    if (!User.id) User.id = uuid()
     if (User.$dirty.password) {
       User.password = await Hash.make(User.password)
     }

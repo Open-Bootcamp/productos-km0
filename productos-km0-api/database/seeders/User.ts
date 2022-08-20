@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
 import User from 'App/Models/User'
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
+import UserFactory from 'Database/factories/UserFactory'
 
 export default class extends BaseSeeder {
   public async run() {
@@ -8,9 +9,12 @@ export default class extends BaseSeeder {
     // Database.rawQuery('CREATE EXTENSION earthdistance')
     // Database.rawQuery('CREATE EXTENSION postgis')
 
+    const fakes = await UserFactory.createMany(10)
+
+    await Promise.all(fakes.map((it) => it.save()))
+
     User.createMany([
       {
-        id: 1,
         fullname: 'Maria Coin',
         username: 'mari0083',
         password: '12345',
