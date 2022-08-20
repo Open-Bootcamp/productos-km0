@@ -11,6 +11,7 @@ import HomeScrenStyle from "./style";
 import iconGoogle from "../../../assets/iconoGoogle.png";
 // validador de los valores de cada input y encargado de manejar los errores que se muestran
 import validator from "../../validations/validator";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const HomeScreen = (props) => {
   // Mediante esta constante manejamos el error
@@ -24,6 +25,11 @@ const HomeScreen = (props) => {
   // Aqui guardaremos y modificaremos el valor de la seguridad del input password
   // para mostrar o no el texto encriptado
   const [secure, setSecure] = useState(true);
+
+  const removeAsync = async () => {
+    // TODO esta funcion es de prueba para eliminar el dato de async storage se quitare luego 
+    await AsyncStorage.removeItem('$firstTimne')
+  }
 
   return (
     <>
@@ -123,7 +129,9 @@ const HomeScreen = (props) => {
             Ingresa con Google
           </Text>
         </Pressable>
-        <Pressable style={HomeScrenStyle.buttonToRegister}>
+        <Pressable style={HomeScrenStyle.buttonToRegister}
+          onPress={removeAsync}
+        >
           <Text style={HomeScrenStyle.textButtonSubmit}>Registrate</Text>
         </Pressable>
       </View>
