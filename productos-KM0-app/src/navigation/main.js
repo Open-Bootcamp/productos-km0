@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Importamos las vistas u componentes que queremos enrutar
 import HomeScreen from "../screens/HomeScreen";
+import { CompradorRegister } from "../screens";
 
 // Creamos un satck mediante la funcion importada para luego usar como componente
 const stack = createNativeStackNavigator();
@@ -23,7 +24,9 @@ const MainStack = () => {
         >
           {/* Mediante las screen vamos a ir agregando nuestras vistas al stack
             Indicando el nombre que tendra esa ruta y el componente que renderizara */}
-          <stack.Screen name={"Home"} component={HomeScreen} />
+
+          {/* <stack.Screen name={"Home"} component={HomeScreen} /> */}
+          <stack.Screen name={"Comprador"} component={CompradorRegister} />
           {/* Como por ejemplo la siguiente screen:
             <stack.Screen name={'ExampleScreen'} component={ExampleScreen} /> */}
         </stack.Navigator>
