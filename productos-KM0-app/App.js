@@ -1,4 +1,8 @@
-import MainStack from "./src/navigation/main";
+//import MainStack from "./src/navigation/main";
+import MainStackNavigator from './src/navigation/main'; 
+import {SliderProvider} from './src/components/context/SliderContext'; 
+import { Provider } from 'react-redux';
+import { store } from './src/store/store';
 import { ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
 
@@ -19,5 +23,14 @@ export default function App() {
   if (!loaded) {
     return <ActivityIndicator />;
   }
-   return <MainStack />;
+   return (
+    <>
+      <Provider store={store}>
+        <SliderProvider>
+          <MainStackNavigator />
+        </SliderProvider>
+      </Provider>
+    </>
+  );
+
 }
