@@ -15,6 +15,7 @@ export default class extends BaseSeeder {
 
     User.createMany([
       {
+        id: '8c18be3f-9f06-4ec4-88f6-dffd09b536b3',
         fullname: 'Maria Coin',
         username: 'mari0083',
         password: '12345',
