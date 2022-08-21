@@ -9,6 +9,7 @@ import Sliders from "../screens/Sliders/Sliders";
 import { useSlider } from '../components/hooks/useSlider';
 import Spinner from '../screens/Spinner/Spinner';
 
+
 // Creamos un satck mediante la funcion importada para luego usar como componente
 const stack = createNativeStackNavigator();
 const SlidersStack = createNativeStackNavigator();
