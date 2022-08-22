@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Importamos las vistas u componentes que queremos enrutar
 import HomeScreen from "../screens/HomeScreen";
+import TipoRegistro from '../screens/TipoRegistro/TipoRegistro';
 import Sliders from "../screens/Sliders/Sliders";
 import { useSlider } from '../components/hooks/useSlider';
 import Spinner from '../screens/Spinner/Spinner';
@@ -36,7 +37,8 @@ const MainStack = () => {
           screenOptions={{ headerShown: false }}
         >
           <stack.Screen name={"Home"} component={ HomeScreen} />
-          {/* AAGREGAR ACA RUTAS INTERNAS DE COMPONENTES */}
+          {/* Componente tipo Registro */}
+          <stack.Screen name="TipoRegistro" component={TipoRegistro} />
         </stack.Navigator>
       </NavigationContainer>
     </>

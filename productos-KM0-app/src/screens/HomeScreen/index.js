@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 // Componentes de react native que utilizaremos para maquetar
 import { Text, View, TextInput, Pressable, Image } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 // componete de icono traido de la depoendecia vector icons para utilizar
 // en la key y el eye del input password
 import { Octicons } from "@expo/vector-icons";
@@ -14,6 +15,7 @@ import validator from "../../validations/validator";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const HomeScreen = (props) => {
+  const screenNavigation = useNavigation();
   // Mediante esta constante manejamos el error
   const [erroMessage, setErrorMessage] = useState(false);
   // navigation extraida para poder movernos entre vistas
@@ -28,7 +30,9 @@ const HomeScreen = (props) => {
 
   const removeAsync = async () => {
     // TODO esta funcion es de prueba para eliminar el dato de async storage se quitare luego 
-    await AsyncStorage.removeItem('$firstTimne')
+    //await AsyncStorage.removeItem('$firstTimne') // Esta linea se puede descomentar para porbar los sliders
+    // Redirigir a la pagina de seleccion de tio de Registro
+    screenNavigation.navigate('TipoRegistro');
   }
 
   return (
