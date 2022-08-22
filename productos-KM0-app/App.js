@@ -29,10 +29,11 @@ export default function App () {
     <>
       <Provider store={store}>
         <SliderProvider>
-          <MainStackNavigator />
-          <NavigationContainer>
-            <Navigation />
-          </NavigationContainer>
+          <MainStackNavigator>
+            {/* <NavigationContainer>
+              <Navigation />
+            </NavigationContainer> */}
+          </MainStackNavigator>
         </SliderProvider>
       </Provider>
     </>

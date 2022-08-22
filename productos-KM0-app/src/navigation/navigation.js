@@ -32,14 +32,14 @@ const Tab = createBottomTabNavigator()
 function Tabs () {
   return (
     <Tab.Navigator
-      initialRouteName='Home'
+      initialRouteName='Comprador'
       screenOptions={{
         tabBarActiveTintColor: '#2EC691',
         tabBarStyle: { height: '10%' }
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="Comprador"
         component={Buyer}
         options={{
           tabBarLabel: 'Inicio',

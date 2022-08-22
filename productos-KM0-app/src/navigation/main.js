@@ -1,23 +1,28 @@
 // Importamos las dependencias necesarias para poder crear nuetro
 // enrutador de vistas con navigate
 import React, { useEffect } from 'react'
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// Importamos las vistas u componentes que queremos enrutar
-import HomeScreen from "../screens/HomeScreen";
-import TipoRegistro from '../screens/TipoRegistro/TipoRegistro';
-import Sliders from "../screens/Sliders/Sliders";
-import { useSlider } from '../components/hooks/useSlider';
-import Spinner from '../screens/Spinner/Spinner';
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
+// Importamos las vistas u componentes que queremos enrutar
+import HomeScreen from '../screens/HomeScreen'
+import TipoRegistro from '../screens/TipoRegistro/TipoRegistro'
+import Sliders from '../screens/Sliders/Sliders'
+import { useSlider } from '../components/hooks/useSlider'
+import Spinner from '../screens/Spinner/Spinner'
+
+// Modulo Buyer(comprador)
+import Navigation from './navigation'
 
 // Creamos un satck mediante la funcion importada para luego usar como componente
-const stack = createNativeStackNavigator();
-const SlidersStack = createNativeStackNavigator();
+const stack = createNativeStackNavigator()
+const SlidersStack = createNativeStackNavigator()
+// const Tab = createBottomTabNavigator()
 
 // STACK PARA LOS SLIDERS
 const SlidersStackNavigation = () => {
-  return(
+  return (
     <NavigationContainer>
       <SlidersStack.Navigator
         screenOptions={{ headerShown: false }}
@@ -36,22 +41,23 @@ const MainStack = () => {
           initialRouteName="Home"
           screenOptions={{ headerShown: false }}
         >
-          <stack.Screen name={"Home"} component={ HomeScreen} />
+          <stack.Screen name={'Home'} component={ HomeScreen} />
           {/* Componente tipo Registro */}
           <stack.Screen name="TipoRegistro" component={TipoRegistro} />
+          <stack.Screen name="Comprador" component={Navigation} />
         </stack.Navigator>
       </NavigationContainer>
     </>
-  );
-};
+  )
+}
 
 const MainStackNavigator = () => {
-  const { isFirstTime, isLoading, checkUnboarding } = useSlider();  
+  const { isFirstTime, isLoading, checkUnboarding } = useSlider()
   useEffect(() => {
-    checkUnboarding();
-  },[])
+    checkUnboarding()
+  }, [])
 
   return isLoading ? <Spinner /> : isFirstTime ? <SlidersStackNavigation /> : <MainStack />
 }
 
-export default MainStackNavigator;
+export default MainStackNavigator

@@ -3,8 +3,7 @@ import { SafeAreaView, StyleSheet, Text, View, Dimensions, TouchableOpacity } fr
 import Icon from 'react-native-vector-icons/Ionicons'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import Chat from './Chat'
-import Perfil from './Perfil'
-import { Productors } from '../modules/buyer'
+import { Mapa, Productors } from '../modules/buyer'
 
 const Buyer = () => {
   const { width } = Dimensions.get('window')
@@ -26,7 +25,7 @@ const Buyer = () => {
         </TouchableOpacity>
       </View>
       <Tab.Navigator
-        initialRouteName='Productors'
+        initialRouteName='Mapa'
         screenOptions={{
           tabBarActiveTintColor: '#2EC691',
           tabBarStyle: { height: '10%' }
@@ -55,8 +54,8 @@ const Buyer = () => {
           }}
         />
         <Tab.Screen
-          name="Perfil"
-          component={Perfil }
+          name="Mapa"
+          component={Mapa}
           options={{
             tabBarLabel: 'Ubicación',
             tabBarIcon: ({ color, size }) => (
