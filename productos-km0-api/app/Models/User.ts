@@ -1,8 +1,17 @@
-import { DateTime } from 'luxon'
-import Hash from '@ioc:Adonis/Core/Hash'
-import { v4 as uuid } from 'uuid'
-import { column, beforeSave, BaseModel, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
 import Role from './Role'
+import { DateTime } from 'luxon'
+import { v4 as uuid } from 'uuid'
+import Hash from '@ioc:Adonis/Core/Hash'
+import {
+  column,
+  beforeSave,
+  BaseModel,
+  belongsTo,
+  BelongsTo,
+  manyToMany,
+  ManyToMany,
+} from '@ioc:Adonis/Lucid/Orm'
+import Product from './Product'
 
 export default class User extends BaseModel {
   public static selfAssignPrimaryKey = true
@@ -36,6 +45,18 @@ export default class User extends BaseModel {
 
   @column()
   public picture: string
+
+  @manyToMany(() => Product, {
+    localKey: 'id',
+    pivotForeignKey: 'seller_id',
+    relatedKey: 'id',
+    pivotRelatedForeignKey: 'product_id',
+    pivotTable: 'product_users',
+    pivotTimestamps: true,
+    pivotColumns: ['price', 'status', 'stock'],
+    onQuery: (q) => q.where('status', 1),
+  })
+  public products: ManyToMany<typeof Product>
 
   @column()
   public status: number

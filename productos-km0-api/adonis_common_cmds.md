@@ -49,3 +49,9 @@ or seed an given file
 [pls read deep docs](https://docs.adonisjs.com/guides/models/factories)
 
 `node ace make:factory <model>`
+
+## Controllers
+
+[pls read deep docs](https://docs.adonisjs.com/guides/controllers#document)
+
+`node ace make:controller <model>`
