@@ -1,7 +1,7 @@
+import { column, beforeSave, BaseModel, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
 import { v4 as uuid } from 'uuid'
-import { column, beforeSave, BaseModel, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
 import Role from './Role'
 
 export default class User extends BaseModel {
@@ -23,10 +23,7 @@ export default class User extends BaseModel {
   public email: string
 
   @column()
-  public roleId: string
-
-  @belongsTo(() => Role)
-  public role: BelongsTo<typeof Role>
+  public roleId: number
 
   @column()
   public address: string
@@ -38,7 +35,7 @@ export default class User extends BaseModel {
   public picture: string
 
   @column()
-  public status: number
+  public status: boolean
 
   @column()
   public rememberMeToken?: string
@@ -56,4 +53,8 @@ export default class User extends BaseModel {
       User.password = await Hash.make(User.password)
     }
   }
+
+  @belongsTo(() => Role )
+  public role: BelongsTo<typeof Role>
 }
+
