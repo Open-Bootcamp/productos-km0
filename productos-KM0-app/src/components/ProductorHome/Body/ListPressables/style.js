@@ -13,6 +13,7 @@ const ListPressablesStyle = StyleSheet.create({
     flexDirection: "row",
     justifyContent:'space-evenly',
     marginVertical: heightScreen * 0.02,
+    backgroundColor:colors.textPrimary
  
   },
   pressable: {

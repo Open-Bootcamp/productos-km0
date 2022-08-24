@@ -10,9 +10,12 @@ const ContainerProductsStyle = StyleSheet.create({
     fontSize: font.h4.fontSize,
     fontWeight: font.h4.fontWeight,
     marginLeft: widthScreen * 0.065,
-    marginBottom:heightScreen * 0.013
+    marginBottom:heightScreen * 0.013,
+    backgroundColor:colors.textPrimary
   },
-  listProducts: {},
+  listProducts: {
+    backgroundColor:colors.textPrimary
+  },
 
   productContain: {
     display: "flex",
