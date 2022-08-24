@@ -8,8 +8,6 @@ import { useNavigation } from '@react-navigation/native';
 import { Octicons } from "@expo/vector-icons";
 // Estilos a utilizar en esta vista
 import HomeScrenStyle from "./style";
-// imagen de goggle para utilizar como icono en el ingreso por google
-import iconGoogle from "../../../assets/iconoGoogle.png";
 // validador de los valores de cada input y encargado de manejar los errores que se muestran
 import validator from "../../validations/validator";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -38,8 +36,10 @@ const HomeScreen = (props) => {
   return (
     <>
       <View style={HomeScrenStyle.container}>
-        <Text style={HomeScrenStyle.titlePrimary}>Ingresar</Text>
-        <Text style={HomeScrenStyle.titleSecondary}>KM-0</Text>
+        <View style={HomeScrenStyle.containerTexts}
+        ><Text style={HomeScrenStyle.titlePrimary}>Ingresar</Text>
+        <Text style={HomeScrenStyle.titleSecondary}>KM-0</Text></View>
+        
         {/* Mediante el valor de verda de la constante "secure" modiuficaremos el icono de eye 
         que se muestra en el input password */}
 
@@ -55,8 +55,7 @@ const HomeScreen = (props) => {
 
         {/* El icono de key por el contrario se mantiene constante */}
         <Octicons name="key" size={18} style={HomeScrenStyle.iconKey} />
-        {/* Aqui retornaremos el valor de error que obtengamos de suceder una validacion erronea de los campos */}
-        <Text style={HomeScrenStyle.errorPassword}>{erroMessage}</Text>
+    
         {/* Mediante la existencia de un mensaje de error que devuelve la funcion validadora
         renderizaremos un conjunto u otro de inputs con difernetes estilos que marcaran si hubo un error */}
 
@@ -76,6 +75,7 @@ const HomeScreen = (props) => {
         />
         {/* El valor de verdad de "secure" modificara la propiedad secureTextEntry la cual se encarga de
             mostrar el texto encriptado del input password */}
+             <Text style={HomeScrenStyle.errorPassword}>{erroMessage}</Text>
         <TextInput
           style={
             erroMessage
@@ -125,18 +125,19 @@ const HomeScreen = (props) => {
           <View style={HomeScrenStyle.line2} />
         </View>
         <Pressable style={HomeScrenStyle.buttonGoogle}>
-          <Text style={HomeScrenStyle.textButtonGoogle}>
-            <Image
-              source={{ uri: `${iconGoogle}` }}
-              style={HomeScrenStyle.iconGoogle}
+        <Image style={HomeScrenStyle.iconGoogle}
+              source={{ uri: 'https://cdn-icons-png.flaticon.com/512/2991/2991148.png' }}
+             
             />
+          <Text style={HomeScrenStyle.textButtonGoogle}>
+           
             Ingresa con Google
           </Text>
         </Pressable>
         <Pressable style={HomeScrenStyle.buttonToRegister}
           onPress={removeAsync}
         >
-          <Text style={HomeScrenStyle.textButtonSubmit}>Registrate</Text>
+          <Text style={HomeScrenStyle.textButtonRegister}>Registrate</Text>
         </Pressable>
       </View>
     </>
