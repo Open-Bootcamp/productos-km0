@@ -5,13 +5,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Importamos las vistas u componentes que queremos enrutar
 import HomeScreen from "../screens/HomeScreen";
-import TipoRegistro from '../screens/TipoRegistro/TipoRegistro';
 import Sliders from "../screens/Sliders/Sliders";
 import { useSlider } from '../components/hooks/useSlider';
 import Spinner from '../screens/Spinner/Spinner';
 
-// Mover la pantalla al stack correspondiente
-import ResumenPedido from '../screens/ResumenPedido/ResumenPedido';
 
 // Vista temporal
 import LoginScreen from '../screens/HomeScreen/loginScreen';
@@ -41,9 +38,11 @@ const MainStack = () => {
           initialRouteName="Home"
           screenOptions={{ headerShown: false }}
         >
+
           <stack.Screen name={"Home"} component={ LoginScreen} />
           {/* Componente tipo Registro */}
           <stack.Screen name="TipoRegistro" component={TipoRegistro} />
+
         </stack.Navigator>
       </NavigationContainer>
     </>
