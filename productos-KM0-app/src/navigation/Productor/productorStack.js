@@ -8,6 +8,7 @@ const heightScreen = Dimensions.get("screen").height;
 const widthScreen = Dimensions.get("screen").width;
 const ProductorStack = createBottomTabNavigator();
 
+
 // PODUCTOR STACK
 const ProductorStackNavigation = () => {
   return (
@@ -48,6 +49,7 @@ const ProductorStackNavigation = () => {
         name="Productos"
         component={ProductorHome}
         options={{
+          headerShown: false,
           tabBarLabel: "Productos",
           tabBarIcon: ({ focused }) => (
             <Ionicons
@@ -78,6 +80,7 @@ const ProductorStackNavigation = () => {
         name="Chat"
         component={ProductorHome}
         options={{
+          headerShown: false,
           tabBarLabel: "Chat",
           tabBarIcon: ({ focused }) => (
             <Ionicons
@@ -109,6 +112,7 @@ const ProductorStackNavigation = () => {
         name="Perfil"
         component={ProductorHome}
         options={{
+          headerShown: false,
           tabBarLabel: "Perfil",
           tabBarIcon: ({ focused }) => (
             <Ionicons
@@ -130,7 +134,7 @@ const ProductorStackNavigation = () => {
             borderTopWidth: 1,
             borderTopColor: colors.gradientOrange.primary,
             height: heightScreen * 0.13,
-            paddingBottom: heightScreen * 0.025,
+            paddingBottom: heightScreen * 0.019,
           },
           tabBarActiveTintColor: colors.gradientGreen.primary,
           tabBarInactiveTintColor: colors.gradientOrange.primary,
