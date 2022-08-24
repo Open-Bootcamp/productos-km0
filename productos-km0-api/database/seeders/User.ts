@@ -8,7 +8,6 @@ export default class extends BaseSeeder {
     // Database.rawQuery('CREATE EXTENSION earthdistance')
     // Database.rawQuery('CREATE EXTENSION postgis')
 
-
     const fakes = await UserFactory.with('role', 1).createMany(10)
     await Promise.all(fakes.map((it) => it.save()))
 
