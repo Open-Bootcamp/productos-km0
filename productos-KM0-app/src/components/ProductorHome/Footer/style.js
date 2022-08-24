@@ -50,9 +50,11 @@ const FooterProductorHomeStyle = StyleSheet.create({
   },
   iconNotification: {
     zIndex: 3,
-    position: "absolute",
-    marginLeft: widthScreen * 0.06,
-    bottom: widthScreen * 0.126,
+   
+  marginBottom: - heightScreen * 0.020,
+  marginStart:widthScreen * 0.062
+   
+    
   },
 });
 

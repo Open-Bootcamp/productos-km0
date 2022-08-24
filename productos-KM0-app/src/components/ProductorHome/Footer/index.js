@@ -1,8 +1,13 @@
-import { Pressable, View, Text } from "react-native";
+import { Pressable, View, Text, Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import FooterProductorHomeStyle from "./style";
 import { colors } from "../../../themes/colors";
 import { useEffect, useState } from "react";
+
+
+
+const heightScreen = Dimensions.get("screen").height;
+const widthScreen = Dimensions.get("screen").width;
 
 const FooterProductorHome = (props) => {
   const { notification } = props;
@@ -21,13 +26,13 @@ const FooterProductorHome = (props) => {
     <>
       <Ionicons
         name="ios-add-circle-sharp"
-        size={71}
+        size={heightScreen * 0.09}
         color={colors.gradientOrange.primary}
         style={Style.buttonToAdd}
       />
       <Ionicons
         name="ellipse"
-        size={71}
+        size={heightScreen * 0.09}
         color={colors.textPrimary}
         style={Style.buttonToAdd2}
       />
@@ -35,7 +40,7 @@ const FooterProductorHome = (props) => {
         <Pressable style={Style.button}>
           <Ionicons
             name="ios-home"
-            size={39}
+            size={heightScreen * 0.045}
             color={colors.gradientGreen.primary}
           />
           <Text style={Style.text2}>inicio</Text>
@@ -43,7 +48,7 @@ const FooterProductorHome = (props) => {
         <Pressable style={Style.button}>
           <Ionicons
             name="ios-list"
-            size={39}
+            size={heightScreen * 0.045}
             color={colors.gradientOrange.primary}
             style={Style.iconProducts}
           />
@@ -54,7 +59,7 @@ const FooterProductorHome = (props) => {
           {chatMessage ? (
             <Ionicons
               name="ellipse"
-              size={18}
+              size={heightScreen * 0.02}
               color={colors.textError}
               style={Style.iconNotification}
             />
@@ -64,7 +69,7 @@ const FooterProductorHome = (props) => {
 
           <Ionicons
             name="chatbox-ellipses-outline"
-            size={39}
+            size={heightScreen * 0.045}
             color={colors.gradientOrange.primary}
           />
 
@@ -73,7 +78,7 @@ const FooterProductorHome = (props) => {
         <Pressable style={Style.button}>
           <Ionicons
             name="person-outline"
-            size={39}
+            size={heightScreen * 0.045}
             color={colors.gradientOrange.primary}
           />
 

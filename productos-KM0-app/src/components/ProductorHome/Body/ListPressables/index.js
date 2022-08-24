@@ -1,8 +1,13 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable,Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import ListPressablesStyle from "./style";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "../../../../themes";
+
+
+const heightScreen = Dimensions.get("screen").height;
+const widthScreen = Dimensions.get("screen").width;
+
 
 const ListPressables = (props) => {
   const Style = ListPressablesStyle;
@@ -22,11 +27,14 @@ const ListPressables = (props) => {
           >
             <Ionicons
               name="ios-calendar-sharp"
-              size={35}
+              size={heightScreen * 0.052}
               color={colors.textPrimary}
               style={Style.iconPressable}
             />
-            <Text style={Style.textPressable}>Calendario de entregas</Text>
+           <View  style={Style.textsContain}>
+            <Text style={Style.textPressable}>Calendario</Text>
+            <Text style={Style.textPressable}>de entregas</Text>
+            </View>
           </LinearGradient>
         </Pressable>
 
@@ -42,11 +50,14 @@ const ListPressables = (props) => {
           >
             <Ionicons
               name="md-star-outline"
-              size={35}
+              size={heightScreen * 0.052}
               color={colors.textPrimary}
               style={Style.iconPressable}
             />
-            <Text style={Style.textPressable}>Mis    reviews</Text>
+            <View  style={Style.textsContain}>
+            <Text style={Style.textPressable}>Mis</Text>
+            <Text style={Style.textPressable}>reviews</Text>
+          </View>
           </LinearGradient>
         </Pressable>
       </View>

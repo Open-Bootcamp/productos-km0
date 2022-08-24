@@ -1,8 +1,10 @@
-import { Text , View} from "react-native"
+import { Text , View, Dimensions} from "react-native"
 import {  Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import HeaderProductorHomeStyle from "./style";
 import { colors } from "../../../themes";
+const heightScreen = Dimensions.get("screen").height;
+const widthScreen = Dimensions.get("screen").width;
 
 const HeaderProductorHome = props =>{
 const {notification} =props
@@ -20,22 +22,22 @@ const Style = HeaderProductorHomeStyle
         end={[1, 1]}
         style={Style.header}
       >
-        {notification.type?(<Ionicons
-            name="ellipse"
-            size={18}
-            color={colors.textError}
-            style={Style.iconNotification}
-           
-          />):(<></>)}
+       
        
         <Text style={Style.textHeader}>Hola!</Text>
         <View style={Style.notificationContain}>
-        <Ionicons
+        {notification.type?(<Ionicons
+            name="ellipse"
+            size={heightScreen * 0.023}
+            color={colors.textError}
+            style={Style.iconNotification}
+           
+          />):(<></>)}<Ionicons
           name="notifications-outline"
-          size={20}
+          size={heightScreen * 0.027}
           color={colors.gradientOrange.primary}
           style={Style.iconHeader}
-        />
+        /> 
         </View>
       </LinearGradient>
       

@@ -19,22 +19,25 @@ const ListPressablesStyle = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     backgroundColor: colors.gradientGreen.primary,
-    height: heightScreen * 0.09,
+    height: heightScreen * 0.094,
     borderRadius: 10,
-    width: widthScreen * 0.4,
+    width: widthScreen * 0.45,
     paddingLeft: widthScreen * 0.01,
     paddingTop: heightScreen * 0.02,
+  },
+  textsContain:{
+   alignContent:'center'
   },
   textPressable: {
     fontSize: font.b1.fontSize,
     fontWeight: font.b1.fontWeight,
     color: colors.textPrimary,
-    maxWidth: widthScreen * 0.2,
-    marginLeft: widthScreen * 0.019,
+   
+   
   },
   iconPressable: {
    marginStart: widthScreen * 0.018,
-    marginRight: widthScreen * 0.01,
+    marginRight: widthScreen * 0.024,
   },
 });
 

@@ -22,20 +22,23 @@ const HeaderProductorHomeStyle = StyleSheet.create({
   notificationContain: {
     backgroundColor: colors.textPrimary,
     width: widthScreen * 0.10,
-    height: heightScreen * 0.048,
+    height: heightScreen * 0.046,
     borderRadius: 100,
     marginStart: widthScreen * 0.62,
     marginTop: heightScreen * 0.03,
   },
   iconHeader: {
     marginStart: widthScreen * 0.02,
-    marginTop:  heightScreen * 0.01,
+    marginTop:  heightScreen * 0.015,
+   
   },
   iconNotification: {
     zIndex: 3,
-    position: "absolute",
-    bottom: widthScreen * 0.1,
-    marginStart: widthScreen * 0.88,
+    marginTop: - heightScreen * 0.007,
+  marginBottom: - heightScreen * 0.027,
+  marginStart:widthScreen * 0.062
+  
+  
   },
 });
 

@@ -13,15 +13,21 @@ const ContainerProductsStyle = StyleSheet.create({
     fontWeight: font.h4.fontWeight,
     marginLeft:widthScreen * 0.065,
   },
-  listProducts: {},
+  listProducts: {
+  
+ 
+  },
   productContain: {
     display: "flex",
+    justifyContent:'space-around',
     flexDirection: "row",
     marginTop: heightScreen * 0.013,
     paddingVertical: heightScreen * 0.008,
-    borderBottomWidth: heightScreen * 0.003,
+    borderBottomWidth: heightScreen * 0.001,
     borderColor: "#E3E3E7",
-    marginHorizontal: widthScreen * 0.07,
+  
+
+   
   },
   image: {
     width: widthScreen * 0.15,
