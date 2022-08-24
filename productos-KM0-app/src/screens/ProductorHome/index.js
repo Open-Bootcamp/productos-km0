@@ -1,19 +1,21 @@
 import { View } from "react-native";
 import ProductorHomeStyles from "./style";
 import ContainerProducts from "../../components/ProductorHome/Body/ContainerProducts";
-import FooterProductorHome from "../../components/ProductorHome/Footer";
 import ListPressables from "../../components/ProductorHome/Body/ListPressables";
-import HeaderProductorHome from "../../components/ProductorHome/Header";
 import mockUpProducts from "../../utils/mockUpProducts";
+import ButtonToAdd from "../../components/ProductorHome/ButtonToAdd";
+import HeaderProductorHome from "../../components/ProductorHome/Header";
 
 const ProductorHome = (props) => {
   const notification = { type: "chat" };
+
   return (
     <View style={ProductorHomeStyles.screen}>
-      <HeaderProductorHome notification={notification} />
+ <HeaderProductorHome notification={notification}/>
       <ListPressables />
       <ContainerProducts data={mockUpProducts} />
-      <FooterProductorHome notification={notification} />
+     <ButtonToAdd/>
+     
     </View>
   );
 };

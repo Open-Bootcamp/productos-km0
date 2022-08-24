@@ -9,10 +9,11 @@ import TipoRegistro from '../screens/TipoRegistro/TipoRegistro';
 import Sliders from "../screens/Sliders/Sliders";
 import { useSlider } from '../components/hooks/useSlider';
 import Spinner from '../screens/Spinner/Spinner';
-import ProductorHome from '../screens/ProductorHome';
+
 
 // Vista temporal
 import LoginScreen from '../screens/HomeScreen/loginScreen';
+import ProductorStackNavigation from './Productor/productorStack';
 // Creamos un satck mediante la funcion importada para luego usar como componente
 const stack = createNativeStackNavigator();
 const SlidersStack = createNativeStackNavigator();
@@ -41,7 +42,7 @@ const MainStack = () => {
           <stack.Screen name={"Home"} component={ LoginScreen} />
           {/* Componente tipo Registro */}
           <stack.Screen name="TipoRegistro" component={TipoRegistro} />
-          <stack.Screen name={"ProductorHome"} component={ ProductorHome} />
+          <stack.Screen name={"Productor"} component={ProductorStackNavigation} />
         </stack.Navigator>
       </NavigationContainer>
     </>

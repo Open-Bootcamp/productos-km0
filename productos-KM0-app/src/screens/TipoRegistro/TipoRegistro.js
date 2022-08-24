@@ -47,7 +47,7 @@ const TipoRegistro = () => {
                 }
             ]
         ) */
-        navigation.navigate('ProductorHome')
+        navigation.navigate('Productor')
     }
 
     return(

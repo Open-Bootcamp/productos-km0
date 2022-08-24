@@ -10,33 +10,35 @@ const HeaderProductorHomeStyle = StyleSheet.create({
     flexDirection: "row",
     alignContent: "space-between",
     alignItems: "center",
+    justifyContent:'space-between',
     height: heightScreen * 0.12,
+    paddingHorizontal:widthScreen * 0.06
+  
   },
   textHeader: {
     marginTop: heightScreen * 0.05,
-    marginStart: widthScreen * 0.073,
+  
     color: colors.textPrimary,
     fontSize: font.h1.fontSize,
     fontWeight: font.h1.fontWeight,
   },
   notificationContain: {
     backgroundColor: colors.textPrimary,
-    width: widthScreen * 0.10,
-    height: heightScreen * 0.046,
+    width: heightScreen * 0.048,
+    height: heightScreen * 0.048,
     borderRadius: 100,
-    marginStart: widthScreen * 0.62,
-    marginTop: heightScreen * 0.03,
+    marginTop:heightScreen * 0.03
   },
   iconHeader: {
-    marginStart: widthScreen * 0.02,
-    marginTop:  heightScreen * 0.015,
+    marginStart: widthScreen * 0.022,
+    marginTop:  heightScreen * 0.019,
    
   },
   iconNotification: {
     zIndex: 3,
     marginTop: - heightScreen * 0.007,
   marginBottom: - heightScreen * 0.027,
-  marginStart:widthScreen * 0.062
+  marginStart:widthScreen * 0.052
   
   
   },

@@ -34,7 +34,7 @@ const Style = HeaderProductorHomeStyle
            
           />):(<></>)}<Ionicons
           name="notifications-outline"
-          size={heightScreen * 0.027}
+          size={heightScreen * 0.023}
           color={colors.gradientOrange.primary}
           style={Style.iconHeader}
         /> 
