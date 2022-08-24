@@ -1,70 +1,82 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native'
+import { SafeAreaView, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import Chat from './Chat'
-import { Mapa, Productors } from '../modules/buyer'
-
+import { IndexBuyer } from '../modules/buyer'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Calendar from '../screens/Calendar'
+import Perfil from '../screens/Perfil'
+import HeaderWelcome from '../modules/buyer/components/HeaderWelcome'
 const Buyer = () => {
-  const { width } = Dimensions.get('window')
-  const Tab = createMaterialTopTabNavigator()
+  const Tab = createBottomTabNavigator()
 
   return (
     <SafeAreaView style={ styles.container }>
-      <View style={{ backgroundColor: '#F8AA1B', width, height: '15%', padding: 18, justifyContent: 'center' }}>
-        <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'white' }}>Hola!</Text>
-        <TouchableOpacity
-          onPress={() => {}}
-          style={{ position: 'absolute', right: 10 }}
-        >
-          <View style={{ backgroundColor: 'white', width: 60, height: 60, borderRadius: 100, justifyContent: 'center' }}>
-            <Text style={{ color: 'gray', fontSize: 25, fontWeight: 'bold', alignSelf: 'center' }}>
-            <Icon name="md-notifications-outline" size={30} color="gray" />
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </View>
       <Tab.Navigator
-        initialRouteName='Mapa'
+        initialRouteName='IndexBuyer'
         screenOptions={{
           tabBarActiveTintColor: '#2EC691',
           tabBarStyle: { height: '10%' }
         }}
       >
         <Tab.Screen
-          name="Productors"
-          component={Productors}
+          name="IndexBuyer"
+          component={IndexBuyer}
           options={{
-            tabBarLabel: 'Productores',
+            headerTitle: (props) => <HeaderWelcome {...props} />,
+            // title: 'My home',
+            headerStyle: {
+              // backgroundColor: '#f4511e',
+              backgroundColor: (props) => <HeaderWelcome {...props} />,
+              height: '20%'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold'
+            },
+            tabBarLabel: 'Inicio',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="person-outline" size={25} color={color} />
+              <Icon name="home-outline" size={50} color={color} />
             ),
-            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: 0 }
+            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 },
+            headerShown: false
+          }}
+        />
+        <Tab.Screen
+          name="Calendar"
+          component={Calendar}
+          options={{
+            tabBarLabel: 'Calendario',
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="calendar-outline" size={50} color={color} />
+            ),
+            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 }
           }}
         />
         <Tab.Screen
           name="Chat"
           component={Chat}
           options={{
-            tabBarLabel: 'Productos',
+            tabBarLabel: 'Chat',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="cube-outline" size={25} color={color} />
+              <Icon name="chatbox-ellipses-outline" size={50} color={color} />
             ),
-            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: 0 }
+            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 }
           }}
         />
         <Tab.Screen
-          name="Mapa"
-          component={Mapa}
+          name="Perfil"
+          component={Perfil}
           options={{
-            tabBarLabel: 'Ubicación',
+            tabBarLabel: 'Perfil',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="map-outline" size={25} color={color} />
+              <Icon name="person-outline" size={50} color={color} />
             ),
-            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: 0 }
+            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 }
           }}
         />
       </Tab.Navigator>
+
       {/* <View style={{ backgroundColor: 'white', flexDirection: 'row', justifyContent: 'space-between', padding: 18 }}> */}
         {/* <TouchableOpacity>
           <Icon name="person-outline" size={25} color="#2EC691" >

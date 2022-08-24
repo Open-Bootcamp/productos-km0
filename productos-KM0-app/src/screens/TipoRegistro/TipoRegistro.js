@@ -25,7 +25,7 @@ const TipoRegistro = () => {
         },
         {
           text: 'Ok',
-          onPress: () => navigation.navigate('Comprador')
+          onPress: () => navigation.navigate('Buyer')
         }
       ]
     )

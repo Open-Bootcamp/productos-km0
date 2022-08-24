@@ -13,7 +13,7 @@ import { useSlider } from '../components/hooks/useSlider'
 import Spinner from '../screens/Spinner/Spinner'
 
 // Modulo Buyer(comprador)
-import Navigation from './navigation'
+import Buyer from '../screens/Buyer'
 
 // Creamos un satck mediante la funcion importada para luego usar como componente
 const stack = createNativeStackNavigator()
@@ -44,7 +44,7 @@ const MainStack = () => {
           <stack.Screen name={'Home'} component={ HomeScreen} />
           {/* Componente tipo Registro */}
           <stack.Screen name="TipoRegistro" component={TipoRegistro} />
-          <stack.Screen name="Comprador" component={Navigation} />
+          <stack.Screen name="Buyer" component={Buyer} />
         </stack.Navigator>
       </NavigationContainer>
     </>
