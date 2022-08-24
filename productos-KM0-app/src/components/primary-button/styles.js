@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
-import { colors, font } from "../../themes";
+import { colors } from "../../themes";
+import { font } from "../../themes/fonts"
 export const styles = StyleSheet.create({
   buttonContainer: {
     alignItems: "center",
@@ -9,7 +10,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   text: {
-    ...font.b1,
+    fontSize : font.b1.size,
+    fontWeight: font.b1.weight,
     fontFamily: "Inter-Medium",
     color: colors.textPrimary,
   },
