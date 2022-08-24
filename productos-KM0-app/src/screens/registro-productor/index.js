@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import { font } from "../../themes/font";
+import { font } from "../../themes/fonts";
 import React from "react";
 import FormUser from "../../components/form-user-register";
 
@@ -8,8 +8,8 @@ const ProductorRegister = () => {
     <View style={{ height: "100%", justifyContent: "center" }}>
       <View style={styles.styleView}>
         <View style={styles.firstBlock}>
-          <Text style={font.h1}>HOLA !</Text>
-          <Text style={font.b1}>
+          <Text style={{fontSize: font.h1.size, fontWeight: font.h1.weight}}>HOLA !</Text>
+          <Text style={{fontSize: font.b1.size, fontWeight: font.b1.weight}}>
             Queremos conocerte un poco mejor, por favor, rellena la siguiente
             información
           </Text>
@@ -17,7 +17,7 @@ const ProductorRegister = () => {
         <View>
           <Image
             style={styles.imgStyle}
-            source={require("../../imgs/agricultor.png")}
+            source={require("../../../assets/agricultor.png")}
           />
         </View>
       </View>
