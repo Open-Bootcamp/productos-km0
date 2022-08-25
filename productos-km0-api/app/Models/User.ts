@@ -35,7 +35,13 @@ export default class User extends BaseModel {
   public address: string
 
   @column()
-  public range_distance: number
+  public lat: number
+
+  @column()
+  public lng: number
+
+  @column()
+  public range_distance: string
 
   @column()
   public picture: string

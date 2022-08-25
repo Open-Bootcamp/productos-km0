@@ -1,9 +1,13 @@
+import Database from '@ioc:Adonis/Lucid/Database'
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class UsersSchema extends BaseSchema {
   protected tableName = 'users'
 
   public async up() {
+    Database.rawQuery('CREATE EXTENSION cube')
+    Database.rawQuery('CREATE EXTENSION earthdistance')
+
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
       table.integer('role_id').unsigned().references('id').inTable('roles')
@@ -13,6 +17,8 @@ export default class UsersSchema extends BaseSchema {
       table.string('email', 255).notNullable().unique()
       table.string('address').notNullable()
       table.double('range_distance').notNullable()
+      table.double('lat', 14).notNullable()
+      table.double('lng', 14).notNullable()
       table.boolean('do_delivery').notNullable().defaultTo(false)
       table.boolean('can_deliver_in_point').notNullable().defaultTo(false)
       table.string('picture').nullable()
@@ -24,6 +30,8 @@ export default class UsersSchema extends BaseSchema {
   }
 
   public async down() {
+    Database.rawQuery('DROP EXTENSION cube')
+    Database.rawQuery('DROP EXTENSION earthdistance')
     this.schema.dropTable(this.tableName)
   }
 }
