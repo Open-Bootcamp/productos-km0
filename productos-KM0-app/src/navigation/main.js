@@ -9,6 +9,8 @@ import Sliders from "../screens/Sliders/Sliders";
 import { useSlider } from '../components/hooks/useSlider';
 import Spinner from '../screens/Spinner/Spinner';
 
+import LocationBuyer from '../screens/UbicacionComprador';
+
 
 // Vista temporal
 import LoginScreen from '../screens/HomeScreen/loginScreen';
@@ -39,9 +41,11 @@ const MainStack = () => {
           screenOptions={{ headerShown: false }}
         >
 
+
           <stack.Screen name={"Home"} component={ LoginScreen} />
           {/* Componente tipo Registro */}
           <stack.Screen name="TipoRegistro" component={TipoRegistro} />
+
 
         </stack.Navigator>
       </NavigationContainer>
