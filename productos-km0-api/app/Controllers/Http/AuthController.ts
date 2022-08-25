@@ -32,7 +32,7 @@ export default class AuthController {
         })
       }
 
-      response.status(200)
+      response.ok(null)
   }
 
   public async resetPassword ({ request, response, auth }: HttpContextContract) {
@@ -40,7 +40,7 @@ export default class AuthController {
 
     auth.user?.merge({ password }).save()
 
-    response.status(200)
+    response.ok(null)
   }
 
   public async login ({ request, response, auth }) {
