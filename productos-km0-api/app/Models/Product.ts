@@ -1,14 +1,22 @@
 import User from './User'
 import { DateTime } from 'luxon'
-import { v4 as uuid } from 'uuid'
-import { BaseModel, column, manyToMany, ManyToMany, beforeSave } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
-  public id: string
+  public id: number
 
   @column()
   public name: string
+
+  @column()
+  public picture: string
+
+  @column()
+  public description: string
+
+  @column()
+  public category: string
 
   @manyToMany(() => User, {
     pivotColumns: ['product_id'],
@@ -21,8 +29,6 @@ export default class Product extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @beforeSave()
-  public static async hashPassword(Product: Product) {
-    if (!Product.id) Product.id = uuid()
-  }
+  @column()
+  public status: boolean
 }
