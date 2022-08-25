@@ -1,10 +1,10 @@
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity,Image } from "react-native";
 import React from "react";
 import { styles } from "./styles";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "../../themes";
 
-const PrimaryButton = ({ onPress, style, title = "Default value" }) => {
+const PrimaryButton = ({ onPress, style, vectorNext = false, title = "Default value" }) => {
   return (
     <TouchableOpacity onPress={onPress} style={{ ...style }}>
       <LinearGradient
@@ -13,7 +13,15 @@ const PrimaryButton = ({ onPress, style, title = "Default value" }) => {
         end={[1, 1]}
         style={styles.buttonContainer}
       >
-        <Text style={styles.text}>{title}</Text>
+      <View style={{flexDirection:"row"}}>
+        <View>
+          <Text style={styles.text}>{title}</Text>
+        </View>
+        {vectorNext && <View style={{justifyContent:"center", marginLeft:17}}>
+          <Image source={require("../../../assets/vector-next.png")} />
+        </View>}
+      </View>
+        
       </LinearGradient>
     </TouchableOpacity>
   );
