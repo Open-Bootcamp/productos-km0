@@ -5,7 +5,7 @@ import Factory from '@ioc:Adonis/Lucid/Factory'
 export default Factory.define(Role, ({ faker }) => {
   return {
     name: faker.word.verb(),
-    description: faker.lorem.words(2),
+    description: faker.lorem.words(4),
     createdAt: DateTime.now(),
     updatedAt: DateTime.now(),
   }
