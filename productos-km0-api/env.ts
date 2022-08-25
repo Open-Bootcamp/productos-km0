@@ -27,4 +27,6 @@ export default Env.rules({
   PG_USER: Env.schema.string(),
   PG_PASSWORD: Env.schema.string.optional(),
   PG_DB_NAME: Env.schema.string(),
+  URL_RESET_PASSWORD: Env.schema.string(),
+  FROM_EMAIL: Env.schema.string(),
 })

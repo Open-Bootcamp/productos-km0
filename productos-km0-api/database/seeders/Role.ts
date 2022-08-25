@@ -1,9 +1,20 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import RoleFactory from 'Database/factories/RoleFactory'
+import Role from 'App/Models/Role'
 
-export default class extends BaseSeeder {
+
+export default class RoleSeeder extends BaseSeeder {
   public async run() {
-    const fakeRoles = await RoleFactory.createMany(2)
-    await Promise.all(fakeRoles.map((it) => it.save()))
+    await Role.createMany([
+    {
+      id: 1,
+      name: 'productor',
+      description: 'productor',
+    },
+    {
+      id: 2,
+      name: 'comprador',
+      description: 'comprador'
+    }
+  ])
   }
 }

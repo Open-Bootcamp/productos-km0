@@ -32,10 +32,7 @@ export default class User extends BaseModel {
   public email: string
 
   @column()
-  public roleId: string
-
-  @belongsTo(() => Role)
-  public role: BelongsTo<typeof Role>
+  public roleId: number
 
   @column()
   public address: string
@@ -59,7 +56,7 @@ export default class User extends BaseModel {
   public products: ManyToMany<typeof Product>
 
   @column()
-  public status: number
+  public status: boolean
 
   @column()
   public rememberMeToken?: string
@@ -77,4 +74,8 @@ export default class User extends BaseModel {
       User.password = await Hash.make(User.password)
     }
   }
+
+  @belongsTo(() => Role )
+  public role: BelongsTo<typeof Role>
 }
+

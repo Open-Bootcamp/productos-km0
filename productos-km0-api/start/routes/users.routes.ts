@@ -1,10 +1,6 @@
+import { MiddlewareStore } from '@adonisjs/core/build/standalone'
 import Route from '@ioc:Adonis/Core/Route'
 
 export default () => {
-
-  Route.get('users/producers', 'UsersController.index')
-  
-
-
-  Route.resource('users', 'UsersController')
+  Route.resource('users', 'UserController').apiOnly().middleware('auth')
 }
