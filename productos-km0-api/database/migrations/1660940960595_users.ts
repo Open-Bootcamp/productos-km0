@@ -10,7 +10,7 @@ export default class UsersSchema extends BaseSchema {
 
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.integer('role_id').unsigned().references('id').inTable('roles')
+      table.integer('role_id').unsigned().references('id').inTable('roles').nullable()
       table.string('fullname', 255).notNullable()
       table.string('username', 255).notNullable() //.unique()
       table.string('password', 180).notNullable()

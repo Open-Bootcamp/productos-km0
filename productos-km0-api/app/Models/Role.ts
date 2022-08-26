@@ -21,6 +21,6 @@ export default class Role extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @hasMany(() => User)
+  @hasMany(() => User, { foreignKey: 'roleId' })
   public users: HasMany<typeof User>
 }

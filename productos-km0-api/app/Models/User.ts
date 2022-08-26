@@ -31,6 +31,9 @@ export default class User extends BaseModel {
   @column()
   public roleId: number
 
+  @belongsTo(() => Role)
+  public role: BelongsTo<typeof Role>
+
   @column()
   public address: string
 
@@ -54,7 +57,6 @@ export default class User extends BaseModel {
     pivotTable: 'product_users',
     pivotTimestamps: true,
     pivotColumns: ['price', 'status', 'stock'],
-    onQuery: (q) => q.where('status', 1),
   })
   public products: ManyToMany<typeof Product>
 
@@ -82,7 +84,4 @@ export default class User extends BaseModel {
       User.password = await Hash.make(User.password)
     }
   }
-
-  @belongsTo(() => Role)
-  public role: BelongsTo<typeof Role>
 }
