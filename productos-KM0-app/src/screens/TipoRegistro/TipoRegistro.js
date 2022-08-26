@@ -32,7 +32,7 @@ const TipoRegistro = () => {
     }
 
     const productorHandler = () => {
-        Alert.alert(
+        /* Alert.alert(
             'Redirigir',
             'Redirigir pantallas productor',
             [
@@ -46,7 +46,9 @@ const TipoRegistro = () => {
                     onPress: () => console.log('prueba ok')
                 }
             ]
-        )
+        ) */
+
+        navigation.navigate('DetalleProductor');
     }
 
     return(

@@ -1,41 +1,27 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, Dimensions, TouchableOpacity, ScrollView, FlatList, Image, Alert } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, TouchableOpacity, ScrollView, Image, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from "expo-linear-gradient";
 import { AntDesign, FontAwesome5, MaterialIcons, Feather  } from '@expo/vector-icons';
+import ListaElementos from '../DetalleProductor/RenderElements/ListaElementos';
+import { useSelector } from 'react-redux';
 
 const { height: screenHeight, width: screenWidth } = Dimensions.get('window');
 
-const elementosCompra = [
-    { id: 1, item: 'Tomate', price: 0.8 },
-    { id: 2, item: 'Lechuga', price: 0.6 },
-    { id: 3, item: 'Tomate', price: 0.8 },
-    { id: 4, item: 'Lechuga', price: 0.6 },
-    { id: 5, item: 'Tomate', price: 0.8 },
-    { id: 6, item: 'Lechuga', price: 0.6 },
-    { id: 7, item: 'Tomate', price: 0.8 },
-    { id: 8, item: 'Lechuga', price: 0.6 },
-    { id: 9, item: 'Tomate', price: 0.8 },
-    { id: 10, item: 'Lechuga', price: 0.6 },
-    { id: 11, item: 'Tomate', price: 0.8 },
-    { id: 12, item: 'Lechuga', price: 0.6 },
-    { id: 13, item: 'Tomate', price: 0.8 },
-    { id: 14, item: 'Lechuga', price: 0.6 },
-    { id: 15, item: 'Tomate', price: 0.8 },
-    { id: 16, item: 'Lechuga', price: 0.6 },
-    { id: 17, item: 'Tomate', price: 0.8 },
-
-]
 
 const ResumenPedido = () => {
     const navigation = useNavigation();
+    const { myCartShop } = useSelector( (state) => state.products );
     const [ isActive, setIsActive ] = useState(true);
     const nombreGranja = 'La esperanza';
-    let total = 0;
     const tipoCambio = '$';
-
-    // Obtener el total de la compra
-    elementosCompra.forEach( (ele) => total += ele.price)
+    const getTotalAmountProducts = () => {
+        let total = 0;
+        myCartShop.forEach( (item) => {
+            total = total + item.subTotal
+        });
+        return total.toFixed(2)
+    }
 
     const backHandler = () => {
         navigation.goBack();
@@ -139,18 +125,6 @@ const ResumenPedido = () => {
         )
     }
 
-    const renderProducto = ({item}) => {
-        total = total + item.price;
-        return(
-            <View style={[styles.contentList]}>
-                <Text style={styles.textDetails}>{item.item}</Text>
-                <View style={styles.priceDetails}>
-                    <Text style={styles.textPrice}>{item.price} {tipoCambio}</Text>
-                </View>
-            </View>
-        )
-    }
-
     return(
         <>
             <View style={styles.mainContainer}>
@@ -199,11 +173,7 @@ const ResumenPedido = () => {
                         <View style={styles.listStyle}>
                             <Text style={styles.textFarm}>Granja {nombreGranja}</Text>
                             <View style={{ paddingBottom: 25, paddingTop: 10}}>
-                                <FlatList 
-                                    data={elementosCompra}
-                                    renderItem={renderProducto}
-                                    keyExtractor={ (item) => item.id}
-                                />
+                                <ListaElementos data={myCartShop} h={0.40} />
                             </View>
                         </View>
                     </View>
@@ -218,7 +188,7 @@ const ResumenPedido = () => {
                                 />
                                 <Text style={styles.textTotal}>Total</Text>
                             </View>
-                            <Text style={styles.totalNumber}>{total.toFixed(2)} {tipoCambio}</Text>
+                            <Text style={styles.totalNumber}>{getTotalAmountProducts()} {tipoCambio}</Text>
                         </View>
 
                         <LinearGradient

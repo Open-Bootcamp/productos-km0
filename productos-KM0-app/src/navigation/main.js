@@ -12,6 +12,7 @@ import Spinner from '../screens/Spinner/Spinner';
 
 // Mover la pantalla al stack correspondiente
 import ResumenPedido from '../screens/ResumenPedido/ResumenPedido';
+import DetallesProductor from '../screens/DetalleProductor/DetalleProductor';
 
 // Creamos un satck mediante la funcion importada para luego usar como componente
 const stack = createNativeStackNavigator();
@@ -42,6 +43,8 @@ const MainStack = () => {
           {/* Componente tipo Registro */}
           <stack.Screen name="TipoRegistro" component={TipoRegistro} />
           {/* Pantalla provisional para maquetacion resumen pedido */}
+          
+          <stack.Screen name='DetalleProductor' component={DetallesProductor} />
           <stack.Screen name="ResumenPedido" component={ResumenPedido} />
         </stack.Navigator>
       </NavigationContainer>
