@@ -14,6 +14,9 @@ import Spinner from '../screens/Spinner/Spinner';
 import ResumenPedido from '../screens/ResumenPedido/ResumenPedido';
 import DetallesProductor from '../screens/DetalleProductor/DetalleProductor';
 
+// Vista temporal
+import LoginScreen from '../screens/HomeScreen/loginScreen';
+import ProductorStackNavigation from './Productor/productorStack';
 // Creamos un satck mediante la funcion importada para luego usar como componente
 const stack = createNativeStackNavigator();
 const SlidersStack = createNativeStackNavigator();
@@ -39,7 +42,7 @@ const MainStack = () => {
           initialRouteName="Home"
           screenOptions={{ headerShown: false }}
         >
-          <stack.Screen name={"Home"} component={ HomeScreen} />
+          <stack.Screen name={"Home"} component={ LoginScreen} />
           {/* Componente tipo Registro */}
           <stack.Screen name="TipoRegistro" component={TipoRegistro} />
           {/* Pantalla provisional para maquetacion resumen pedido */}
