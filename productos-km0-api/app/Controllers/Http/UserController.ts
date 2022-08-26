@@ -16,6 +16,37 @@ export default class UsersController {
     })
   }
 
+  public async getProducers ({request, response}: HttpContextContract){
+    const { page = 1, size = 10 } = await request.validate(PaginationValidator)
+    
+    const req = request.qs()
+
+
+    const producers: ModelPaginatorContract<User> = 
+    await User.query()
+    .where('roleId', 1)
+    .if(req.fullname, (query) => {
+      query.where('fullname', 'ilike', `%${req.fullname}%`)
+    })
+    .if(req.id, (query) => {
+      query.where('id', `${req.id}`)
+    })
+    .if(req.delivery, (query) => {
+      query.where('do_delivery', `${req.delivery}`)
+    })
+    .if(req.inPoint, (query) => {
+      query.where('can_deliver_in_point', `${req.inPoint}`)
+    })
+    .preload('role')
+    .paginate(page, size)
+    
+    response.ok({
+      totalResuslts: producers.total,
+      results: producers.all(),
+    })
+  }
+
+
   public async store ({ request, response }: HttpContextContract) {
     const body = await request.validate(UserValidator)
 
