@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import User from 'App/Models/User'
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import RoleFactory from './RoleFactory'
+import ProductFactory from './ProductFactory'
 
 export default function (type: number) {
   return Factory.define(User, ({ faker }) => {
@@ -25,6 +26,7 @@ export default function (type: number) {
       updatedAt: DateTime.now(),
     }
   })
+    .relation('products', () => ProductFactory)
     .relation('role', () => RoleFactory)
     .build()
 }

@@ -19,7 +19,12 @@ export default class Product extends BaseModel {
   public category: string
 
   @manyToMany(() => User, {
-    pivotColumns: ['product_id'],
+    localKey: 'id',
+    pivotForeignKey: 'product_id',
+    relatedKey: 'id',
+    pivotRelatedForeignKey: 'seller_id',
+    pivotTable: 'product_users',
+    pivotColumns: ['product_id', 'seller_id', 'price', 'status', 'stock'],
   })
   public users: ManyToMany<typeof User>
 
