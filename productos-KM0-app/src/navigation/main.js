@@ -13,7 +13,7 @@ import Sliders from "../screens/Sliders/Sliders";
 import { CompradorRegister, ProductorRegister } from '../screens/index';
 import Spinner from '../screens/Spinner/Spinner';
 
-import LocationBuyer from '../screens/UbicacionComprador';
+
 
 
 // Modulo Buyer(comprador)
@@ -113,12 +113,15 @@ const MainStack = () => {
         >
 
 
+
           <stack.Screen name="Login" component={ LoginScreen} />
           <stack.Screen name="RegistroHome" component={TipoRegistro} />
           <stack.Screen name='RegistroComprador' component={CompradorRegistroNavigator} />
           <stack.Screen name='RegistroProductor' component={ProductorRegistroNavigator} />
           <stack.Screen name='ProductorHome' component={ProductorStackNavigator} />
           <stack.Screen name='CompradorHome' component={CompradorStackNavigator} />
+
+
 
 
 
