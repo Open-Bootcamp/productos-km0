@@ -61,6 +61,7 @@
     "@adonisjs/mail": "^8.1.2",
     "@adonisjs/redis": "^7.3.1",
     "@adonisjs/repl": "^3.1.11",
+    "adonis5-swagger": "^1.4.1",
     "knex-postgis": "^0.14.3",
     "luxon": "^3.0.1",
     "pg": "^8.7.3",
