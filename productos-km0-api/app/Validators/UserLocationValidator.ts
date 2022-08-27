@@ -7,14 +7,12 @@ export default class UserLocationValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-    lat: schema.string([rule]),
-    lng: schema.string([rule]),
+    lat: schema.string.optional([rule]),
+    lng: schema.string.optional([rule]),
   })
 
   public messages: CustomMessages = {
     'lat.regex': 'Invalid User latitude',
-    'lat.required': 'User latitude is required',
     'lng.regex': 'Invalid User longitud',
-    'lng.required': 'User longitud is required',
   }
 }
