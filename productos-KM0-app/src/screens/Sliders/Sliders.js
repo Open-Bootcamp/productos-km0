@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Image, StyleSheet, TouchableOpacity, Text, Dimensions } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { setFirstTimeLoginR } from '../../services/userService';
+import { useDispatch } from 'react-redux';
 import { data } from '../../constant/SlidersContent';
 import { useSlider } from '../../components/hooks/useSlider';
 
 const { height: screenHeight, width: screenWidth } = Dimensions.get('window');
 
 const Sliders = () => {
+    const disptach = useDispatch();
     const { setFirstTimeLogin } = useSlider();
     const [ activeIndex, setActiveIndex ] = useState(0);
     const [ itemActive, setItemActive ] = useState(0);
@@ -15,7 +18,8 @@ const Sliders = () => {
         itemActive.snapToNext();
 
         if(activeIndex === 2) {
-            setFirstTimeLogin()
+            //setFirstTimeLogin()
+            disptach(setFirstTimeLoginR())
         }
     }
 

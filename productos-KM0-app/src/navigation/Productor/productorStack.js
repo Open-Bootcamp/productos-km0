@@ -1,143 +1,95 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import ProductorHome from "../../screens/ProductorHome";
-import { colors } from "../../themes";
+import PerfilProductor from "../../screens/ProductorHome/PerfilProductor";
+import ProductosProductor from "../../screens/ProductorHome/ProductosProductor";
+import ChatProductor from "../../screens/ProductorHome/ChatProductor";
 import { Dimensions } from "react-native";
 
 const heightScreen = Dimensions.get("screen").height;
 const widthScreen = Dimensions.get("screen").width;
 const ProductorStack = createBottomTabNavigator();
 
-
 // PODUCTOR STACK
 const ProductorStackNavigation = () => {
   return (
-    <ProductorStack.Navigator initialRouteName="Home">
+    <ProductorStack.Navigator 
+      initialRouteName="Home"
+      
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: '#00A887',
+        tabBarInactiveTintColor: '#FF8F15',
+        tabBarLabelPosition: 'below-icon',
+        tabBarStyle: {
+          height: 90
+        },
+        tabBarLabelStyle: {
+          fontSize: 18,
+          marginBottom: 10,
+          fontWeight: '500',
+          fontFamily: 'Inter'
+        }
+      }}
+
+    >
       <ProductorStack.Screen
         name="Home"
         component={ProductorHome}
         options={{
-          headerShown: false,
+          //headerShown: false,
           tabBarLabel: "Home",
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ color }) => (
             <Ionicons
               name="ios-home"
-              color={
-                focused
-                  ? colors.gradientGreen.primary
-                  : colors.gradientOrange.primary
-              }
-              size={heightScreen * 0.05}
-              style={{ marginTop: widthScreen * 0.01 }}
+              color={color}
+              size={35}
             />
           ),
-          tabBarLabelStyle: {
-            fontSize: heightScreen * 0.02,
-          },
-          tabBarLabelPosition: "below-icon",
-          tabBarStyle: {
-            borderTopWidth: 1,
-            borderTopColor: colors.gradientOrange.primary,
-            height: heightScreen * 0.13,
-            paddingBottom: heightScreen * 0.019,
-          },
-          tabBarActiveTintColor: colors.gradientGreen.primary,
-          tabBarInactiveTintColor: colors.gradientOrange.primary,
         }}
       />
       <ProductorStack.Screen
         name="Productos"
-        component={ProductorHome}
+        component={ProductosProductor}
         options={{
-          headerShown: false,
           tabBarLabel: "Productos",
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ color }) => (
             <Ionicons
               name="ios-list"
-              color={
-                focused
-                  ? colors.gradientGreen.primary
-                  : colors.gradientOrange.primary
-              }
-              size={heightScreen * 0.05}
-              style={{ marginTop: widthScreen * 0.01 }}
+              color={color}
+              size={35}
             />
           ),
-          tabBarLabelStyle: {
-            fontSize: heightScreen * 0.02,
-          },
-          tabBarStyle: {
-            borderTopWidth: 1,
-            borderTopColor: colors.gradientOrange.primary,
-            height: heightScreen * 0.13,
-            paddingBottom: heightScreen * 0.019,
-          },
-          tabBarActiveTintColor: colors.gradientGreen.primary,
-          tabBarInactiveTintColor: colors.gradientOrange.primary,
         }}
       />
       <ProductorStack.Screen
         name="Chat"
-        component={ProductorHome}
+        component={ChatProductor}
         options={{
           headerShown: false,
           tabBarLabel: "Chat",
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ color }) => (
             <Ionicons
               name="chatbox-ellipses-outline"
-              color={
-                focused
-                  ? colors.gradientGreen.primary
-                  : colors.gradientOrange.primary
-              }
-              size={heightScreen * 0.05}
-              style={{ marginTop: widthScreen * 0.01 }}
+              color={color}
+              size={35}
             />
           ),
-          tabBarLabelStyle: {
-            fontSize: heightScreen * 0.02,
-          },
-          tabBarLabelPosition: "below-icon",
-          tabBarStyle: {
-            borderTopWidth: 1,
-            borderTopColor: colors.gradientOrange.primary,
-            height: heightScreen * 0.13,
-            paddingBottom: heightScreen * 0.019,
-          },
-          tabBarActiveTintColor: colors.gradientGreen.primary,
-          tabBarInactiveTintColor: colors.gradientOrange.primary,
         }}
       />
       <ProductorStack.Screen
         name="Perfil"
-        component={ProductorHome}
+        component={PerfilProductor}
         options={{
           headerShown: false,
           tabBarLabel: "Perfil",
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ color }) => (
             <Ionicons
               name="person-outline"
-              color={
-                focused
-                  ? colors.gradientGreen.primary
-                  : colors.gradientOrange.primary
-              }
-              size={heightScreen * 0.05}
-              style={{ marginTop: widthScreen * 0.01 }}
+              color={color}
+              size={35}
             />
           ),
-          tabBarLabelStyle: {
-            fontSize: heightScreen * 0.02,
-          },
-          tabBarLabelPosition: "below-icon",
-          tabBarStyle: {
-            borderTopWidth: 1,
-            borderTopColor: colors.gradientOrange.primary,
-            height: heightScreen * 0.13,
-            paddingBottom: heightScreen * 0.019,
-          },
-          tabBarActiveTintColor: colors.gradientGreen.primary,
-          tabBarInactiveTintColor: colors.gradientOrange.primary,
         }}
       />
     </ProductorStack.Navigator>
