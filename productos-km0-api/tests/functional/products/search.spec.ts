@@ -16,7 +16,7 @@ const stringifyQs = (qs) => {
     .join('&')
 }
 
-// TODO : Talk with AMDevelop about some issue in the database clean up that forces me that repeact and skip code in theses tests.
+// TODO : Talk with AMDevelop about some issue in the database clean up that forces me that repeact and skip code in these tests.
 // TODO : Read more Adonisjs testing docs
 test.group('Products search feature', (group) => {
   group.each.setup(async () => {
@@ -88,7 +88,7 @@ test.group('Products search feature', (group) => {
     response.assertBodyContains({ meta: { total: 2 } })
   })
 
-  test('should all available products on not user coordenates', async ({ client }) => {
+  test('should list all available products on not user coordenates', async ({ client }) => {
     await RoleFactory.merge({ name: 'productor' }).create()
 
     await productCreator({
