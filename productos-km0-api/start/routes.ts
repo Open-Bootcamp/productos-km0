@@ -24,6 +24,5 @@ Route.group(() => {
     TransactionRoutes()
     UsersRoutes()
   }).prefix('v1')
-})
-  .prefix('api')
-  //.middleware('auth')
+}).prefix('api')
+//.middleware('auth')

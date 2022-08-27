@@ -1,0 +1,32 @@
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: "Tomates"
+        picture:
+          type: string
+          example: "https://loremflickr.com/640/480/food"
+          description: Picture of the producto. Only one!
+        category:
+          type: integer
+          format: int64
+          example: 2
+        description:
+          type: string
+          example: "Best tomatoes in Friburg"
+        price:
+          type: integer
+          format: int64
+          example: 2.6
+        stock:
+          type: integer
+          format: int64
+          description: Available quantity of the product
+          example: 10

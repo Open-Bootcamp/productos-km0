@@ -1,0 +1,51 @@
+/api/v1/products:
+  get:
+    tags:
+      - Products
+    security: []
+    description: Search products
+    parameters:
+      - name: lat
+        in: query
+        description: "user latitude for search nearby products"
+        required: false
+        type: string
+      - name: lng
+        in: query
+        description: "user longitude for search nearby products"
+        required: false
+      - name: range
+        in: query
+        description: "range for search. 2.5 = 2.5kms"
+        required: false
+      - name: page
+        in: query
+        description: "Page to be listed"
+        required: false
+      - name: size
+        in: query
+        description: "Size per page to be listed"
+        required: false
+      - name: sort
+        in: query
+        description: "Array of string for sorting. e.g: sort=distance,price,do_delivery"
+        required: false
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                meta:
+                  type: object
+                  $ref: "#/components/schemas/Page"
+                data:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Product"
+      401:
+        description: Unauthorized

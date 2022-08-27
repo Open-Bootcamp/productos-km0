@@ -1,0 +1,17 @@
+components:
+  schemas:
+    Page:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+          example: 70
+        per_page:
+          type: integer
+          format: int64
+          example: 10
+        current_page:
+          type: integer
+          format: int64
+          example: 1
