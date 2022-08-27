@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet } from 'react-native'
+import { SafeAreaView, StyleSheet, Dimensions } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Chat from './Chat'
 import { IndexBuyer } from '../modules/buyer'
@@ -9,7 +9,8 @@ import Perfil from '../screens/Perfil'
 import HeaderWelcome from '../modules/buyer/components/HeaderWelcome'
 const Buyer = () => {
   const Tab = createBottomTabNavigator()
-
+  const withScreen = Dimensions.get('window').width
+  const w = withScreen * 0.09
   return (
     <SafeAreaView style={ styles.container }>
       <Tab.Navigator
@@ -36,7 +37,7 @@ const Buyer = () => {
             },
             tabBarLabel: 'Inicio',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="home-outline" size={50} color={color} />
+              <Icon name="home-outline" size={w} color={color} />
             ),
             tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 },
             headerShown: false
@@ -48,7 +49,7 @@ const Buyer = () => {
           options={{
             tabBarLabel: 'Calendario',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="calendar-outline" size={50} color={color} />
+              <Icon name="calendar-outline" size={w} color={color} />
             ),
             tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 }
           }}
@@ -59,7 +60,7 @@ const Buyer = () => {
           options={{
             tabBarLabel: 'Chat',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="chatbox-ellipses-outline" size={50} color={color} />
+              <Icon name="chatbox-ellipses-outline" size={w} color={color} />
             ),
             tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 }
           }}
@@ -70,7 +71,7 @@ const Buyer = () => {
           options={{
             tabBarLabel: 'Perfil',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="person-outline" size={50} color={color} />
+              <Icon name="person-outline" size={w} color={color} />
             ),
             tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 }
           }}

@@ -1,35 +1,40 @@
 import React from 'react'
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Dimensions } from 'react-native'
 import productors from '../../constant/productors'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 const Productors = () => {
+  const withScreen = Dimensions.get('window').width
+  const w = withScreen * 0.55
+  const sizeImage = withScreen * 0.15
+  const sizeLabel = withScreen * 0.045
+  const sizeDescription = withScreen * 0.040
   const Item = ({ granja, image, distancia, totalProductos, calificacion }) => (
     <>
     <View style = { styles.card }>
-      <View>
-        <Image source={{ uri: image }} style={{ borderRadius: 100, width: 80, height: 80, marginLeft: 10 }} />
+      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Image source={{ uri: image }} style={{ borderRadius: 100, width: sizeImage, height: sizeImage, marginTop: 10 }} />
       </View>
-      <View style={{ flexDirection: 'column' }}>
+      <View style={{ flexDirection: 'column', width: w, padding: 10 }}>
         <View style={{ flexDirection: 'row' }}>
-          <Text style={{ fontSize: 25, fontWeight: 'bold' }}>{`${granja} `}</Text>
-          <Icon name='star-outline' style={{ marginTop: 8, fontSize: 18, color: '#F8AA1B' }} />
-          <Text style={{ fontSize: 18, color: '#F8AA1B', marginTop: 6 }}>{ `${calificacion}`}</Text>
+          <Text style={{ fontSize: sizeLabel, fontWeight: 'bold' }}>{`${granja} `}</Text>
+          <Icon name='star-outline' style={{ marginTop: 8, fontSize: withScreen * 0.030, color: '#F8AA1B' }} />
+          <Text style={{ fontSize: withScreen * 0.030, color: '#F8AA1B', marginTop: 6 }}>{ `${calificacion}`}</Text>
         </View>
         <View style={{ flexDirection: 'row' }}>
-          <Icon name='location-outline' style={{ marginTop: 0, fontSize: 22 }} />
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'gray' }}>{distancia}</Text>
+          <Icon name='location-outline' style={{ fontSize: sizeDescription, marginTop: 3 }} />
+          <Text style={{ fontSize: sizeDescription, fontWeight: 'bold', color: 'gray' }}>{distancia}</Text>
         </View>
         <View style={{ flexDirection: 'row' }}>
-          <Icon name='cube-outline' style={{ marginTop: 0, fontSize: 22 }} />
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'gray' }}>{totalProductos}</Text>
+          <Icon name='cube-outline' style={{ fontSize: sizeDescription, marginTop: 3 }} />
+          <Text style={{ fontSize: sizeDescription, fontWeight: 'bold', color: 'gray' }}>{totalProductos}</Text>
         </View>
       </View>
       <View style={{ justifyContent: 'center' }}>
         <TouchableOpacity
-          style={{ backgroundColor: '#2EC691', padding: 10, borderRadius: 5, height: 60, justifyContent: 'center' }}
+          style={{ backgroundColor: '#2EC691', padding: 10, borderRadius: 5, height: 50, justifyContent: 'center' }}
         >
-          <Text style={{ color: 'white', fontSize: 25 }}>Ver { '>' }</Text>
+          <Text style={{ color: 'white', fontSize: sizeLabel }}>Ver { '>' }</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -77,13 +82,14 @@ const styles = StyleSheet.create({
     backgroundCoor: 'gray',
     padding: 16,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginLeft: -1
   },
   card: {
-    width: 500,
+    width: Dimensions.get('window').width * 0.95,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     marginBottom: 0,
-    padding: 10
+    padding: 8
   }
 })
