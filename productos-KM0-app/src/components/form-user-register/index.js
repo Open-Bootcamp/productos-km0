@@ -1,10 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TextInput, Button } from "react-native";
+import { Text, View, TextInput } from "react-native";
 import { Formik, useField } from "formik";
 import { styles } from "./styles";
 import PrimaryButton from "../primary-button";
-import { font } from "../../themes";
-import { registerValidation } from "../../validation/registerValidation";
+import { font } from "../../themes/fonts";
+import { registerValidation } from "../../validations/registerValidation";
 
 const initialValues = {
   completeName: "",
@@ -19,7 +19,7 @@ const FormikValues = ({ name, textLabel, ...props }) => {
   return (
     <>
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-        <Text style={font.b1}>{textLabel}</Text>
+        <Text style={{fontSize: font.b1.size, fontWeight: font.b1.weight}}>{textLabel}</Text>
         {metaInfo.error && <Text style={styles.error}>{metaInfo.error}</Text>}
       </View>
       <TextInput
