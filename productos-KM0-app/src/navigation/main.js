@@ -11,12 +11,15 @@ import Sliders from "../screens/Sliders/Sliders";
 import { CompradorRegister, ProductorRegister } from '../screens/index';
 import Spinner from '../screens/Spinner/Spinner';
 
+// Modulo Buyer(comprador)
+import Navigation from './navigation';
+import { IndexBuyer } from '../modules/buyer';
 // Mover la pantalla al stack correspondiente
-import ResumenPedido from '../screens/ResumenPedido/ResumenPedido';
+import ResumenPedido from '../screens/ResumenPedido/ResumenPedido'
 
 // Vista temporal
-import LoginScreen from '../screens/HomeScreen/loginScreen';
-import ProductorStackNavigation from './Productor/productorStack';
+import LoginScreen from '../screens/HomeScreen/loginScreen'
+import ProductorStackNavigation from './Productor/productorStack'
 // Creamos un satck mediante la funcion importada para luego usar como componente
 const stack = createNativeStackNavigator();
 const SlidersStack = createNativeStackNavigator();
@@ -25,9 +28,10 @@ const StackComprador = createNativeStackNavigator();
 const StackRegistroComprador = createNativeStackNavigator();
 const StackRegistroProductor = createNativeStackNavigator();
 
+
 // STACK PARA LOS SLIDERS
 const SlidersStackNavigation = () => {
-  return(
+  return (
     <NavigationContainer>
       <SlidersStack.Navigator
         initialRouteName='Sliders'
@@ -47,7 +51,8 @@ const CompradorStackNavigator = () => {
         screenOptions={{ headerShown: false}}
       >
         {/* TODO REEMPLAZAR ESTA VISTA POR EL STACK BOTTOM NAVIGATION PARA COMPRADOR */}
-        <StackComprador.Screen name="HomeComprador" component={ResumenPedido} />
+        <StackComprador.Screen name="HomeComprador" component={Navigation} />
+        <StackComprador.Screen name='Resumen' component={ResumenPedido} />
         {/* TODO AGREGAR PANTALLAS PARA NAVEGACION DE COMPRADOR */}
       </StackComprador.Navigator>
   )
@@ -109,8 +114,8 @@ const MainStack = () => {
         </stack.Navigator>
       </NavigationContainer>
     </>
-  );
-};
+  )
+}
 
 const MainStackNavigator = () => {
   const disptach = useDispatch();
@@ -126,4 +131,4 @@ const MainStackNavigator = () => {
     <MainStack />
 }
 
-export default MainStackNavigator;
+export default MainStackNavigator
