@@ -5,10 +5,12 @@ import PaginationValidator from 'App/Validators/PaginationValidator'
 import UserValidator from 'App/Validators/UserValidator'
 
 export default class UsersController {
-  public async index ({ request, response }: HttpContextContract) {
+  public async index({ request, response }: HttpContextContract) {
     const { page = 1, size = 10 } = await request.validate(PaginationValidator)
 
-    const user: ModelPaginatorContract<User> = await User.query().paginate(page, size)
+    const user: ModelPaginatorContract<User> = await User.query()
+      .preload('role')
+      .paginate(page, size)
 
     response.ok({
       totalResuslts: user.total,
@@ -16,7 +18,7 @@ export default class UsersController {
     })
   }
 
-  public async store ({ request, response }: HttpContextContract) {
+  public async store({ request, response }: HttpContextContract) {
     const body = await request.validate(UserValidator)
 
     const user = await User.create(body)
@@ -24,15 +26,15 @@ export default class UsersController {
     response.ok(user)
   }
 
-  public async show ({ request, response }: HttpContextContract) {
-    const id: string = request.param('id')
+  public async show({ response, params: { id } }: HttpContextContract) {
+    const user = await User.findOrFail(id)
 
-    const user: User = await User.findOrFail(id)
+    await user.load('role')
 
-    response.ok(user)
+    response.ok({ data: user })
   }
 
-  public async update ({ request, response, params: { id } }: HttpContextContract) {
+  public async update({ request, response, params: { id } }: HttpContextContract) {
     const user = await User.findOrFail(id)
 
     const body = await request.validate(UserValidator)
@@ -41,7 +43,7 @@ export default class UsersController {
     response.ok(user)
   }
 
-  public async destroy ({ response, params: { id } }: HttpContextContract) {
+  public async destroy({ response, params: { id } }: HttpContextContract) {
     const user = await User.findOrFail(id)
 
     await user.delete()
