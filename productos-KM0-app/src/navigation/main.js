@@ -5,13 +5,18 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 
+
 import { checkUnboardingR } from '../services/userService';
 import { useSelector, useDispatch } from 'react-redux';
 import TipoRegistro from '../screens/TipoRegistro/TipoRegistro';
 
+
+// Importamos las vistas u componentes que queremos enrutar
+
 import Sliders from "../screens/Sliders/Sliders";
 import { CompradorRegister, ProductorRegister } from '../screens/index';
 import Spinner from '../screens/Spinner/Spinner';
+
 
 
 
@@ -21,6 +26,7 @@ import Navigation from './navigation';
 import { IndexBuyer } from '../modules/buyer';
 // Mover la pantalla al stack correspondiente
 import ResumenPedido from '../screens/ResumenPedido/ResumenPedido'
+
 
 
 // Vista temporal
@@ -111,6 +117,7 @@ const MainStack = () => {
           initialRouteName="Login"
           screenOptions={{ headerShown: false }}
         >
+
 
 
 
