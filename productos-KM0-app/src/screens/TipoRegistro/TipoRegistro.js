@@ -1,53 +1,27 @@
-import React from 'react'
-import { Text, View, StyleSheet, Dimensions, Image, Alert, TouchableOpacity } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { AntDesign } from '@expo/vector-icons'
+
+import React from 'react';
+import { Text, View, StyleSheet, Dimensions, Image, Alert, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { userAction } from '../../features/userSlice';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { AntDesign  } from '@expo/vector-icons';
 
 const { height: screenHeight, width: screenWidth } = Dimensions.get('window')
 
 const TipoRegistro = () => {
-  const navigation = useNavigation()
-  const backHandler = () => {
-    // retroceder a pagina de inicio de sesion
-    navigation.goBack()
-  }
+    const dispatch = useDispatch();
+    const navigation = useNavigation();
+    const backHandler = () => {
+        navigation.goBack();
+    }
+    const compradorHandler = () => {
+        navigation.navigate('RegistroComprador');
+    }
 
-  const compradorHandler = () => {
-    Alert.alert(
-      'Redirigir',
-      'Redirigir pantallas comprador',
-      [
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Prueba'),
-          style: 'cancel'
-        },
-        {
-          text: 'Ok',
-          onPress: () => navigation.navigate('Buyer')
-        }
-      ]
-    )
-  }
-
-  const productorHandler = () => {
-    Alert.alert(
-      'Redirigir',
-      'Redirigir pantallas productor',
-      [
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Prueba'),
-          style: 'cancel'
-        },
-        {
-          text: 'Ok',
-          onPress: () => console.log('prueba ok')
-        }
-      ]
-    )
-  }
+    const productorHandler = () => {
+        navigation.navigate('RegistroProductor')
+    }
 
   return (
         <>
