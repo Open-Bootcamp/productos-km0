@@ -1,10 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import {Text, TextInput, Image, StyleSheet,View, TouchableHighlight} from "react-native";
 import {styles} from "../../components/form-user-register/styles";
 import PrimaryButton from "../../components/primary-button";
 import {font} from "../../themes/fonts";
-import { colors } from "../../themes";
+import ButtonAskProducer from "../../components/ButtonAskProducer";
 
 
 const AskProducer = ()=>{
@@ -12,54 +12,53 @@ const [color1 , setColor1 ] = useState(false)
 const [color2, setColor2 ] = useState(false)
 const [color3 , setColor3 ] = useState(false)
 const [color4, setColor4 ] = useState(false)
-const [objAux, setObjAux] = useState({reparto:"",entrega : ""});
+const [data, setData] = useState({granja:"",reparto:"",entrega : ""});
 
-const changeColor = ()=>{
+const changeColor1 = ()=>{
     if(!color1){
     setColor1(!color1)
     setColor2(false)
     let valor = !color1
-    setObjAux({...objAux,reparto:valor})
+    setData({...data,reparto:valor})
     }
 }
-
 const changeColor2 = ()=>{
     if(!color2){
     setColor2(!color2)
     setColor1(false)
     let valor = color2
-    setObjAux({...objAux,reparto:valor})
+    setData({...data,reparto:valor})
     }
 }
-
 const changeColor3 = ()=>{
     if(!color3){
     setColor3(!color3)
     setColor4(false)
     let valor = !color3
-    setObjAux({...objAux,entrega:valor})
+    setData({...data,entrega:valor})
     }
 }
-
 const changeColor4 = ()=>{
     if(!color4){
     setColor4(!color4)
     setColor3(false)
     let valor = color4
-    setObjAux({...objAux,entrega:valor})
+    setData({...data,entrega:valor})
     }
 } 
 
+const handleChange = (e)=>{
+    setData({...data,granja:e})
+}
+
 const handleSubmit =()=>{
-    if(objAux.entrega === "" || objAux.reparto === ""){
+    if(data.entrega === "" || data.reparto === ""){
         console.log("Debe completar las preguntas para continuar");
         return;
     }
     console.log("Datos enviados !");
-    console.log(objAux);
+    console.log(data);
 }
-
-
 
 return <>
     <View style={{...style.image, position:"absolute", marginLeft:15.2, marginTop:78.33}}><Image source={require("../../../assets/vector-back.png")} /></View>
@@ -67,31 +66,26 @@ return <>
         <View >
             <Text style={style.title}>Nombre de la granja (opcional)</Text>
         </View>
-        <TextInput style={styles.textInput} placeholder="Ejemplo: Los Nogales"></TextInput>
+        <TextInput onChangeText={handleChange} style={styles.textInput} placeholder="Ejemplo: Los Nogales"></TextInput>
+
+        <View style={{marginTop:38, marginBottom:40}}>
         <View >
             <Text style={style.title}>¿Haces reparto a domicilio?</Text>
         </View>
-
-        <View style={{flexDirection:"row"}}>
-            <TouchableHighlight style={{...style.button,backgroundColor:!color1 ? colors.inputFieldBackground : colors.gradientOrange.primary}} onPress={changeColor} ><View style={style.button} ><Text>Si</Text></View></TouchableHighlight>
-
-            <TouchableHighlight style={{...style.button,backgroundColor:!color2 ? colors.inputFieldBackground : colors.gradientOrange.primary}} onPress={changeColor2} ><View style={style.button} ><Text>No</Text></View></TouchableHighlight>
+        <View style={{flexDirection:"row",marginTop:15}}>
+            <ButtonAskProducer booleanValue={color1} textButton={"Si"} onPressAction={changeColor1} />
+            <ButtonAskProducer booleanValue={color2} textButton={"No"} onPressAction={changeColor2} />
         </View>
-        
-        <View >
+        <View style={{marginTop:38}} >
             <Text style={style.title}>¿Entregas en un punto en concreto?</Text>
         </View>
-
-        <View style={{flexDirection:"row"}}>
-            <TouchableHighlight style={{...style.button,backgroundColor:!color3 ? colors.inputFieldBackground : colors.gradientOrange.primary}} onPress={changeColor3} ><View style={style.button} ><Text>Si</Text></View></TouchableHighlight>
-
-            <TouchableHighlight style={{...style.button,backgroundColor:!color4 ? colors.inputFieldBackground : colors.gradientOrange.primary}} onPress={changeColor4} ><View style={style.button} ><Text>No</Text></View></TouchableHighlight>
-        </View> 
-
+        <View style={{flexDirection:"row",marginTop:15}}>
+            <ButtonAskProducer booleanValue={color3} textButton={"Si"} onPressAction={changeColor3} />
+            <ButtonAskProducer booleanValue={color4} textButton={"No"} onPressAction={changeColor4} />
+        </View>   
+        </View>
+        <PrimaryButton onPress={handleSubmit} vectorNext={true} title="Siguiente"></PrimaryButton>
         
-
-        <PrimaryButton onPress={handleSubmit}></PrimaryButton>
-
     </View>
 </>
 }
@@ -129,4 +123,5 @@ const style = StyleSheet.create({
         resizeMode: 'contain'
     }
 })
+
 export default AskProducer;
