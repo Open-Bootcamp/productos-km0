@@ -4,7 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from "expo-linear-gradient";
 import { AntDesign, FontAwesome5, MaterialIcons, Feather  } from '@expo/vector-icons';
 import ListaElementos from '../DetalleProductor/RenderElements/ListaElementos';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch  } from 'react-redux';
+import { userAction } from '../../features/userSlice';
 
 const { height: screenHeight, width: screenWidth } = Dimensions.get('window');
 
@@ -12,6 +13,7 @@ const { height: screenHeight, width: screenWidth } = Dimensions.get('window');
 const ResumenPedido = () => {
     const navigation = useNavigation();
     const { myCartShop } = useSelector( (state) => state.products );
+    const dispatch = useDispatch();
     const [ isActive, setIsActive ] = useState(true);
     const nombreGranja = 'La esperanza';
     const tipoCambio = '$';
@@ -52,21 +54,8 @@ const ResumenPedido = () => {
 
     // Funcion reservar
     const reservOrder = () => {
-        Alert.alert(
-            'Boton ordenar aca',
-            'WOW tu orden se encuenta enproceso',
-            [
-                {
-                    text: 'Cancel',
-                    onPress: () => console.log('Prueba'),
-                    style: 'cancel'
-                },
-                {
-                    text: 'Ok',
-                    onPress: () => console.log('prueba ok')
-                }
-            ]
-        )
+        navigation.navigate('Login')
+        dispatch(userAction.logOutHandler())
     }
 
     // Mostrar condicionalmente la direccion o entrega

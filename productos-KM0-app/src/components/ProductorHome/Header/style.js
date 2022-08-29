@@ -18,12 +18,16 @@ const HeaderProductorHomeStyle = StyleSheet.create({
   textHeader: {
     marginTop: heightScreen * 0.05,
   
-    color: colors.textPrimary,
-    fontSize: font.h1.fontSize,
-    fontWeight: font.h1.fontWeight,
+    //color: colors.textPrimary,
+    color: '#fff',
+    //fontSize: font.h1.fontSize,
+    fontSize: 25,
+    fontWeight: '700'
+    //fontWeight: font.h1.fontWeight,
   },
   notificationContain: {
-    backgroundColor: colors.textPrimary,
+    //backgroundColor: colors.textPrimary,
+    backgroundColor: '#fff',
     width: heightScreen * 0.048,
     height: heightScreen * 0.048,
     borderRadius: 100,

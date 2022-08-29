@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Alert, TouchableOpacity, Image, KeyboardAvoidingView, Text, Dimensions, TextInput, Keyboard, Platform, TouchableWithoutFeedback } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { userAction } from '../../features/userSlice';
 import { colors } from "../../themes/colors";
 import { font } from "../../themes/fonts";
 import { Octicons } from "@expo/vector-icons";
 import imgGoogle from '../../../assets/ic_google.png';
+import { loginUser } from '../../services/userService';
+import Spinner from '../Spinner/Spinner';
 import validator from "../../validations/validator";
 
 const { height: screenHeight, width: screenWidth } = Dimensions.get('window');
 
 const LoginScreen = () => {
+    const dispatch = useDispatch();
+    const { spinner, isAuth, user } = useSelector( (state) => state.user );
     const navigation = useNavigation();
     const regex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
     // estados de formulario
@@ -34,6 +40,16 @@ const LoginScreen = () => {
         }
     },[])
 
+    // Revisar que tipo de usuario es
+    useEffect(() => {
+        if(isAuth) {
+            if(user.typeUser === 'productor') {
+                navigation.navigate('ProductorHome');
+            }else if( user.typeUser === 'comprador') {
+                navigation.navigate('CompradorHome');
+            }
+        }
+    },[isAuth]);
     //Funciones
     const validateForm = () => {
 
@@ -54,25 +70,14 @@ const LoginScreen = () => {
             setPasswordError(true);
             return;
         }
-        setPassword("");
+        //setPassword("");
 
         if(!emailError && !passwordError ) {
             Keyboard.dismiss();
-            Alert.alert(
-                'Iniciaste sesion con exito',
-                'Redirigir a home user o productor',
-                [
-                    {
-                        text: 'Cancel',
-                        onPress: () => console.log('Prueba'),
-                        style: 'cancel'
-                    },
-                    {
-                        text: 'Ok',
-                        onPress: () => console.log('prueba ok')
-                    }
-                ]
-            )
+            // Validar que haya iniciado sesion, redirigir a respectivo home
+            dispatch(loginUser()) //TODO enviar objeto de validacion
+            // Funcion de prueba
+            dispatch(userAction.actionSpinner(true));
         }
     }
 
@@ -95,7 +100,7 @@ const LoginScreen = () => {
     }
 
     const handlerRegister = () => {
-        navigation.navigate('TipoRegistro')
+        navigation.navigate('RegistroHome');
     }
 
     const resetPassword = () => {
@@ -174,7 +179,7 @@ const LoginScreen = () => {
                                     onPress={validateForm}
                                     activeOpacity={0.5} 
                                     style={styles.buttonSubmit}>
-                                    <Text style={styles.textButtonSubmit}>Ingresar</Text>
+                                    <Text style={styles.textButtonSubmit}>{spinner ? <Spinner color='#fff' /> : 'Ingresar'}</Text>
                                 </TouchableOpacity>
                             </View>
 
@@ -286,6 +291,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 19,
         color: colors.screenBackground,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center'
     },
     textToRestorePassword: {
         color: colors.gradientOrange.primary,
