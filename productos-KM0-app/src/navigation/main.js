@@ -22,10 +22,11 @@ import Spinner from '../screens/Spinner/Spinner';
 
 
 // Modulo Buyer(comprador)
-import Navigation from './navigation';
-import { IndexBuyer } from '../modules/buyer';
+import Buyer from '../screens/Buyer';
+
 // Mover la pantalla al stack correspondiente
-import ResumenPedido from '../screens/ResumenPedido/ResumenPedido'
+import ResumenPedido from '../screens/ResumenPedido/ResumenPedido';
+import DetallesProductor from '../screens/DetalleProductor/DetalleProductor';
 
 
 
@@ -63,8 +64,9 @@ const CompradorStackNavigator = () => {
         screenOptions={{ headerShown: false}}
       >
         {/* TODO REEMPLAZAR ESTA VISTA POR EL STACK BOTTOM NAVIGATION PARA COMPRADOR */}
-        <StackComprador.Screen name="HomeComprador" component={Navigation} />
-        <StackComprador.Screen name='Resumen' component={ResumenPedido} />
+        <StackComprador.Screen name="HomeComprador" component={Buyer} />
+        <StackComprador.Screen name='DetalleProductor' component={DetallesProductor} />
+        <StackComprador.Screen name='ResumenPedido' component={ResumenPedido} />
         {/* TODO AGREGAR PANTALLAS PARA NAVEGACION DE COMPRADOR */}
       </StackComprador.Navigator>
   )

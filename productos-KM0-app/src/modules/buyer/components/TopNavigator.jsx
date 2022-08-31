@@ -1,23 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import { useNavigation } from '@react-navigation/native';
 import Productors from '../Productors'
 import Mapa from '../Mapa'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Products from '../Products'
-import { Dimensions } from 'react-native'
+import { navigationActions } from '../../../features/navigationSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const TopNavigator = () => {
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
   const Tab = createMaterialTopTabNavigator()
-  const withScreen = Dimensions.get('window').width
-  const w = withScreen * 0.05
-  const sizeLabel = withScreen * 0.035
+  const { initialRoute } = useSelector( (state) => state.navigationslice )
+
+  useEffect(() => {
+    dispatch(navigationActions.changePageHeader('Mapa'))
+  },[])
+
   return (
       <Tab.Navigator
+        
         initialRouteName='Mapa'
+        
         screenOptions={{
-          tabBarActiveTintColor: '#2EC691'
-          // tabBarStyle: { height: '10%' }
+          tabBarActiveTintColor:  initialRoute === 'Mapa' ? '#2EC691' : '#2EC691',
+          tabBarInactiveTintColor: initialRoute === 'Mapa' ? '#373C48': '#f2f3f5',
+          tabBarIndicatorContainerStyle: {
+            backgroundColor: initialRoute === 'Mapa' ? '#F2F3F5' : '#FF8F15'
+          },
+          tabBarStyle: {
+            height: 50,
+          },
+          tabBarItemStyle: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginTop: 2
+          },
+          tabBarIndicatorStyle: {
+            backgroundColor: '#2EC691'
+          },
+          swipeEnabled: false
         }}
+        
       >
         <Tab.Screen
           name="Productors"
@@ -25,10 +50,14 @@ const TopNavigator = () => {
           options={{
             tabBarLabel: 'Productores',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="person-outline" size={w} color={color} />
+              <Icon name="person-outline" size={18} color={color} />
             ),
-            tabBarLabelStyle: { marginBottom: 10, fontSize: sizeLabel, marginTop: 0 }
           }}
+          listeners={ ({navigation, route}) => ({
+            tabPress: e => {
+              dispatch(navigationActions.changePageHeader(route.name))
+            }
+          })}
         />
         <Tab.Screen
           name="Products"
@@ -36,10 +65,14 @@ const TopNavigator = () => {
           options={{
             tabBarLabel: 'Productos',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="cube-outline" size={w} color={color} />
+              <Icon name="cube-outline" size={18} color={color} />
             ),
-            tabBarLabelStyle: { marginBottom: 10, fontSize: sizeLabel, marginTop: 0 }
           }}
+          listeners={ ({navigation, route}) => ({
+            tabPress: e => {
+              dispatch(navigationActions.changePageHeader(route.name))
+            }
+          })}
         />
         <Tab.Screen
           name="Mapa"
@@ -48,10 +81,14 @@ const TopNavigator = () => {
             headerShown: true,
             tabBarLabel: 'Ubicación',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="map-outline" size={w} color={color} />
+              <Icon name="map-outline" size={18} color={color} />
             ),
-            tabBarLabelStyle: { marginBottom: 10, fontSize: sizeLabel, marginTop: 0 }
           }}
+          listeners={ ({navigation, route}) => ({
+            tabPress: e => {
+              dispatch(navigationActions.changePageHeader(route.name))
+            }
+          })}
         />
       </Tab.Navigator>
   )

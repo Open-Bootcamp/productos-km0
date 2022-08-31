@@ -1,9 +1,16 @@
 import React from 'react'
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Dimensions } from 'react-native'
 import productors from '../../constant/productors'
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 const Productors = () => {
+  const navigation = useNavigation();
+
+  const detalleProductorHandler = () => {
+    navigation.navigate('DetalleProductor')
+  }
+
   const withScreen = Dimensions.get('window').width
   const w = withScreen * 0.55
   const sizeImage = withScreen * 0.15
@@ -32,6 +39,8 @@ const Productors = () => {
       </View>
       <View style={{ justifyContent: 'center' }}>
         <TouchableOpacity
+          activeOpacity={0.5}
+          onPress={detalleProductorHandler}
           style={{ backgroundColor: '#2EC691', padding: 10, borderRadius: 5, height: 50, justifyContent: 'center' }}
         >
           <Text style={{ color: 'white', fontSize: sizeLabel }}>Ver { '>' }</Text>

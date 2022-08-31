@@ -49,29 +49,30 @@ const Mapa = () => {
         scrollEnabled={true}
         rotateEnabled={true}
         mapType="standard"
-        onLayout={() => { _map.showCallout() }}
+        //onLayout={() => { _map.showCallout() }}
       >
         {
-          makers.map((marker, i) => (
-            <>
-            <Marker
-            key={marker.longitude}
-            coordinate={{
-              latitude: marker.latitude,
-              longitude: marker.longitude
-            }}
-            flat={true}
-            ref={ref => { _map = ref }}
-            >
-              <Callout
-                tooltip={false}
-                style={{ backgroundColor: '#FFFFFF' }}
-              >
-                <Text>{marker.title}</Text>
-              </Callout>
-              </Marker>
-            </>
-          ))
+          makers.map((marker, i) => {
+            return(
+              <React.Fragment key={Math.random()}>
+                <Marker
+                  coordinate={{
+                    latitude: marker.latitude,
+                    longitude: marker.longitude
+                  }}
+                  flat={true}
+                  ref={ref => { _map = ref }}
+                >
+                    <Callout
+                      tooltip={false}
+                      style={{ backgroundColor: '#FFFFFF' }}
+                    >
+                      <Text>{marker.title}</Text>
+                    </Callout>
+                  </Marker>
+              </React.Fragment>
+            )
+          })
         }
         {/* markers && markers.map(marker => (
         <>
