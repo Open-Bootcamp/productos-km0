@@ -5,8 +5,8 @@ import Chat from './Chat'
 import { IndexBuyer } from '../modules/buyer'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Calendar from '../screens/Calendar'
-import Perfil from '../screens/Perfil'
-import HeaderWelcome from '../modules/buyer/components/HeaderWelcome'
+import PerfilComprador from '../screens/Perfil'
+
 const Buyer = () => {
   const Tab = createBottomTabNavigator()
   const withScreen = Dimensions.get('window').width
@@ -16,31 +16,29 @@ const Buyer = () => {
       <Tab.Navigator
         initialRouteName='IndexBuyer'
         screenOptions={{
-          tabBarActiveTintColor: '#2EC691',
-          tabBarStyle: { height: '10%' }
+          headerShown: false,
+          tabBarActiveTintColor: '#00A887',
+          tabBarInactiveTintColor: '#FF8F15',
+          tabBarLabelPosition: 'below-icon',
+          tabBarStyle: {
+            height: 90
+          },
+          tabBarLabelStyle: {
+            fontSize: 18,
+            marginBottom: 10,
+            fontWeight: '500',
+            fontFamily: 'Inter'
+          }
         }}
       >
         <Tab.Screen
           name="IndexBuyer"
           component={IndexBuyer}
           options={{
-            headerTitle: (props) => <HeaderWelcome {...props} />,
-            // title: 'My home',
-            headerStyle: {
-              // backgroundColor: '#f4511e',
-              backgroundColor: (props) => <HeaderWelcome {...props} />,
-              height: '20%'
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold'
-            },
             tabBarLabel: 'Inicio',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="home-outline" size={w} color={color} />
+              <Icon name="home-outline" size={35} color={color} />
             ),
-            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 },
-            headerShown: false
           }}
         />
         <Tab.Screen
@@ -49,9 +47,8 @@ const Buyer = () => {
           options={{
             tabBarLabel: 'Calendario',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="calendar-outline" size={w} color={color} />
+              <Icon name="calendar-outline" size={35} color={color} />
             ),
-            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 }
           }}
         />
         <Tab.Screen
@@ -60,42 +57,21 @@ const Buyer = () => {
           options={{
             tabBarLabel: 'Chat',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="chatbox-ellipses-outline" size={w} color={color} />
+              <Icon name="chatbox-ellipses-outline" size={35} color={color} />
             ),
-            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 }
           }}
         />
         <Tab.Screen
           name="Perfil"
-          component={Perfil}
+          component={PerfilComprador}
           options={{
             tabBarLabel: 'Perfil',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="person-outline" size={w} color={color} />
+              <Icon name="person-outline" size={35} color={color} />
             ),
-            tabBarLabelStyle: { marginBottom: 10, fontSize: 18, marginTop: -15 }
           }}
         />
       </Tab.Navigator>
-
-      {/* <View style={{ backgroundColor: 'white', flexDirection: 'row', justifyContent: 'space-between', padding: 18 }}> */}
-        {/* <TouchableOpacity>
-          <Icon name="person-outline" size={25} color="#2EC691" >
-            <Text>Productores</Text>
-          </Icon>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name="cube-outline" size={25} color="gray">
-            <Text>Productos</Text>
-          </Icon>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name="map-outline" size={25} color="gray">
-            <Icon name="list-outline" size={25} color="gray" />
-          </Icon>
-        </TouchableOpacity> */}
-      {/* </View> */}
-
     </SafeAreaView>
   )
 }

@@ -49,6 +49,9 @@ const LoginScreen = () => {
                 navigation.navigate('CompradorHome');
             }
         }
+
+        setEmail('')
+        setPassword('')
     },[isAuth]);
     //Funciones
     const validateForm = () => {
@@ -66,16 +69,25 @@ const LoginScreen = () => {
             setEmailError(true)
             return;
         }
-        if( password != '1234567'){
+        if( password.length < 7){
             setPasswordError(true);
             return;
         }
-        //setPassword("");
+        //330076118
+        setPassword("");
 
         if(!emailError && !passwordError ) {
             Keyboard.dismiss();
             // Validar que haya iniciado sesion, redirigir a respectivo home
-            dispatch(loginUser()) //TODO enviar objeto de validacion
+            //dispatch(loginUser()) //TODO enviar objeto de validacion
+
+            // Prueba para tipo de usuario
+            if(password === '1234567'){
+                dispatch(loginUser(1)) // productor
+            }else if (password === '12345678'){
+                dispatch(loginUser(2)) // comprador
+            }
+            // Fin prueba tipo de usuario
             // Funcion de prueba
             dispatch(userAction.actionSpinner(true));
         }

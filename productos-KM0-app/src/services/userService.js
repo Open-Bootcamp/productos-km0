@@ -9,11 +9,24 @@ export const loginUser = createAsyncThunk(
         try {
             setTimeout(() => {
                 // Validar que la respuesta sea 200 para darle accesos
-                thunkApi.dispatch(userAction.userLoggedIn({
-                    name: 'James',
-                    lastName: 'Tuyuc',
-                    typeUser: 'comprador'
-                }))
+
+                // pruba redirigir sesion usuario
+                if( data === 1) {
+                    thunkApi.dispatch(userAction.userLoggedIn({
+                        name: 'James',
+                        lastName: 'Tuyuc',
+                        typeUser: 'productor'
+                    }))
+                }else if (data === 2){
+                    thunkApi.dispatch(userAction.userLoggedIn({
+                        name: 'James',
+                        lastName: 'Tuyuc',
+                        typeUser: 'comprador'
+                    }))
+                }
+
+                // fin prueba
+                
                 thunkApi.dispatch(userAction.actionSpinner(false));
             }, 2000)
         } catch (error) {
