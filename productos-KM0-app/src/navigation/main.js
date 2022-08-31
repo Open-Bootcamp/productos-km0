@@ -3,19 +3,31 @@
 import React, { useEffect } from 'react'
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// Validacion usando Redux
+
+
+
 import { checkUnboardingR } from '../services/userService';
 import { useSelector, useDispatch } from 'react-redux';
 import TipoRegistro from '../screens/TipoRegistro/TipoRegistro';
+
+
+// Importamos las vistas u componentes que queremos enrutar
+
 import Sliders from "../screens/Sliders/Sliders";
 import { CompradorRegister, ProductorRegister } from '../screens/index';
 import Spinner from '../screens/Spinner/Spinner';
+
+
+
+
 
 // Modulo Buyer(comprador)
 import Navigation from './navigation';
 import { IndexBuyer } from '../modules/buyer';
 // Mover la pantalla al stack correspondiente
 import ResumenPedido from '../screens/ResumenPedido/ResumenPedido'
+
+
 
 // Vista temporal
 import LoginScreen from '../screens/HomeScreen/loginScreen'
@@ -105,12 +117,21 @@ const MainStack = () => {
           initialRouteName="Login"
           screenOptions={{ headerShown: false }}
         >
+
+
+
+
           <stack.Screen name="Login" component={ LoginScreen} />
           <stack.Screen name="RegistroHome" component={TipoRegistro} />
           <stack.Screen name='RegistroComprador' component={CompradorRegistroNavigator} />
           <stack.Screen name='RegistroProductor' component={ProductorRegistroNavigator} />
           <stack.Screen name='ProductorHome' component={ProductorStackNavigator} />
           <stack.Screen name='CompradorHome' component={CompradorStackNavigator} />
+
+
+
+
+
         </stack.Navigator>
       </NavigationContainer>
     </>
