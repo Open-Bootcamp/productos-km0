@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { userSlice } from '../features/userSlice';
 import { productSlice } from '../features/productsSlice';
 import { navigationSlice } from '../features/navigationSlice';
+import { unboardingSlice } from '../features/unboardingSlice';
 
 // CONFIGURACION DE REDUCER STOTE
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
         user: userSlice.reducer,
         products: productSlice.reducer,
         navigationslice: navigationSlice.reducer,
+        unboardingSlice: unboardingSlice.reducer
         // ACA SE PUEDE AGREGAR MAS SLICES
         // EXAMPLE
         // productos: productSlice.reducer

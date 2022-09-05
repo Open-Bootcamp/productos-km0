@@ -4,7 +4,9 @@ import { colors } from "../../themes";
 const ProductorHomeStyles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor:colors.textPrimary
+    backgroundColor:colors.textPrimary,
+    //backgroundColor: 'yellow',
+    position: 'relative'
   },
  
 });

@@ -71,6 +71,54 @@ const mockUpProducts = [
       offPrice: false,
       amountInStock: 12,
     },
+    {
+      id: "7",
+      categoty: "FRUTAS",
+      name: "Kiwi",
+      picture:
+       'https://i.blogs.es/df8116/kiwis1/840_560.jpg',
+      description: "top 10 Kiwi en terragon",
+      price: 26,
+      unit: "lb",
+      offPrice: false,
+      amountInStock: 12,
+    },
+    {
+      id: "8",
+      categoty: "FRUTAS",
+      name: "Kiwi",
+      picture:
+       'https://i.blogs.es/df8116/kiwis1/840_560.jpg',
+      description: "top 10 Kiwi en terragon",
+      price: 26,
+      unit: "lb",
+      offPrice: false,
+      amountInStock: 12,
+    },
+    {
+      id: "9",
+      categoty: "FRUTAS",
+      name: "Kiwi",
+      picture:
+       'https://i.blogs.es/df8116/kiwis1/840_560.jpg',
+      description: "top 10 Kiwi en terragon",
+      price: 26,
+      unit: "lb",
+      offPrice: false,
+      amountInStock: 12,
+    },
+    {
+      id: "10",
+      categoty: "FRUTAS",
+      name: "Kiwi",
+      picture:
+       'https://i.blogs.es/df8116/kiwis1/840_560.jpg',
+      description: "top 10 Kiwi en terragon",
+      price: 26,
+      unit: "lb",
+      offPrice: false,
+      amountInStock: 12,
+    },
   ];
 
   export default mockUpProducts
