@@ -1,0 +1,150 @@
+/api/v1/roles:
+  get:
+    tags:
+      - Role
+    security: []
+    description: List Role
+    parameters:
+      - name: page
+        in: query
+        description: "Page to be listed"
+        required: false
+      - name: size
+        in: query
+        description: "Size per page to be listed"
+        required: false
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Role list
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                meta:
+                  type: object
+                  $ref: "#/components/schemas/Result"
+                data:
+                  type: object
+                  items:
+                  $ref: "#/components/schemas/Role"
+      401:
+        description: Unauthorized
+  post:
+    tags:
+      - Role
+    security: []
+    description: Create Role
+    parameters:
+      - name: Request
+        in:  body
+        required: true
+        schema:
+          properties:
+            name:
+              type: string
+              example: 'productor'
+              required: true
+            description:
+              type: string
+              example: 'admin'
+              required: true
+            status:
+              type: boolean
+              example: 'true'
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Role created successful
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Role"
+      401:
+        description: Invalid Credentials
+      422:
+        description: Required field
+/api/v1/roles/{id}:
+  get:
+    tags:
+      - Role
+    security: []
+    description: List Role by ID
+    parameters:
+      - name: id
+        in: query
+        description: "Role id to be listed"
+        required: true
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Return Role by id
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Role"
+      401:
+        description: Unauthorized
+      404:
+        description: Role not found
+  put:
+    tags:
+      - Role
+    security: []
+    description: Update existing role
+    parameters:
+      - name: id
+        in: query
+        description: "Role id to be update"
+        required: true
+      - name: Request
+        in: body
+        required: true
+        schema:
+          properties:
+            name:
+              type: string
+              example: "productor"
+            description:
+              type: string
+              example: "productor"
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Role modified successfully
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Role"
+      401:
+        description: Unauthorized
+      404:
+        description: Role not found
+  delete:
+    tags:
+      - Role
+    security: []
+    description: Delete existing role
+    parameters:
+      - name: id
+        in: query
+        description: "Role id to be delete"
+        required: true
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Role delete successfully
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Role"
+      401:
+        description: Unauthorized
+      404:
+        description: Role not found

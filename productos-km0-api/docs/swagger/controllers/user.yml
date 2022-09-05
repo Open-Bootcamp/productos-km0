@@ -1,0 +1,246 @@
+/api/v1/users:
+  get:
+    tags:
+      - User
+    security: []
+    description: List Users
+    parameters:
+      - name: page
+        in: query
+        description: "Page to be listed"
+        required: false
+      - name: size
+        in: query
+        description: "Size per page to be listed"
+        required: false
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Users list
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                meta:
+                  type: object
+                  $ref: "#/components/schemas/Result"
+                data:
+                  type: object
+                  items:
+                  $ref: "#/components/schemas/User"
+      401:
+        description: Unauthorized
+  post:
+    tags:
+      - User
+    security: []
+    description: Create User
+    parameters:
+      - name: Request
+        in:  body
+        required: true
+        schema:
+          properties:
+            fullname:
+              type: string
+              example: "Alberto Lopez"
+            username:
+              type: string
+              example: "usuario1"
+            email:
+              type: string
+              example: "usuario@email.com"
+            password:
+              type: string
+              example: "admin"
+            address:
+              type: string
+              example: "Calle ejemplo, 1"
+            lat:
+              type: double
+              format: int64
+              example: 32.200
+            lng:
+              type: double
+              format: double
+              example: 50.400
+            range_distance:
+              type: number
+              example: 850
+            picture:
+              type: string
+              example: "https://loremflickr.com/320/240"
+              description: Profile picture
+            status:
+              type: boolean
+              example: true
+            can_deliver_in_point:
+              type: boolean
+              example: true
+            do_delivery:
+              type: boolean
+              example: true
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: User created successful
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      422:
+        description: Required field
+/api/v1/users/{id}:
+  get:
+    tags:
+      - User
+    security: []
+    description: List User by ID
+    parameters:
+      - name: id
+        in: query
+        description: "User id to be listed"
+        required: true
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Return user by id
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      401:
+        description: Unauthorized
+      404:
+        description: User not found
+  put:
+    tags:
+      - User
+    security: []
+    description: update existing user
+    parameters:
+      - name: id
+        in: query
+        description: "User id to be update"
+        required: true
+      - name: Request body
+        in: body
+        required: true
+        schema:
+          properties:
+            fullname:
+              type: string
+              example: "Alberto Lopez"
+            username:
+              type: string
+              example: "usuario1"
+            email:
+              type: string
+              example: "usuario@email.com"
+            address:
+              type: string
+              example: "Calle ejemplo, 1"
+            lat:
+              type: double
+              format: int64
+              example: 32.200
+            lng:
+              type: double
+              format: double
+              example: 50.400
+            range_distance:
+              type: number
+              example: 850
+            picture:
+              type: string
+              example: "https://loremflickr.com/320/240"
+              description: Profile picture
+            status:
+              type: boolean
+              example: true
+            can_deliver_in_point:
+              type: boolean
+              example: true
+            do_delivery:
+              type: boolean
+              example: true
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: User modified successfully
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      401:
+        description: Unauthorized
+      404:
+        description: User not found
+  delete:
+    tags:
+      - User
+    security: []
+    description: Delete existing user
+    parameters:
+      - name: id
+        in: query
+        description: "User id to be delete"
+        required: true
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: User delete successfully
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      401:
+        description: Unauthorized
+      404:
+        description: User not found
+/api/v1/register:
+  post:
+    tags:
+      - User
+    security: []
+    description: Register User
+    parameters:
+      - name: Request
+        in:  body
+        required: true
+        schema:
+          properties:
+            username:
+              type: string
+              example: 'usuario1'
+              required: true
+            password:
+              type: string
+              example: 'admin'
+              required: true
+            email:
+              type: string
+              example: 'usuario@email.com'
+              required: true
+            role:
+              type: number
+              example: 1
+              required: true
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: User Register successful
+      422:
+        description: Required field
+
+
+
+
+

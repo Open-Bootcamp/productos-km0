@@ -1,0 +1,101 @@
+/api/v1/login:
+  post:
+    tags:
+      - Auth
+    security: []
+    description: Login User
+    parameters:
+      - name: credentials
+        in:  body
+        required: true
+        schema:
+          properties:
+            email:
+              type: string
+              example: 'usuario@email.com'
+              required: true
+            password:
+              type: integer
+              format: int64
+              example: 'admin'
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Successful login
+        content:
+          application/json:
+            schema:
+                type: object
+                properties:
+                  token:
+                    properties:
+                      type:
+                        type: string
+                        example: "bearer"
+                      token:
+                        type: string
+                        example: "Mg.FSUKX0dLis04_jySAUYWSWAYsgjmSxnsact-qzDsP7mf6tN5ovH7hoI7DBsX"
+                  data:
+                      type: object
+                      items:
+                      $ref: "#/components/schemas/User"
+      401:
+        description: Invalid Credentials
+/api/v1/logout:
+  post:
+    tags:
+      - Auth
+    security: []
+    description: Logout User
+    responses:
+      200:
+        description: Successful logout
+      401:
+        description: Not authorized
+/api/v1/resetPassword/email:
+  post:
+    tags:
+      - Auth
+    security: []
+    description: Send email to reset password
+    parameters:
+      - name: email
+        in:  body
+        required: true
+        schema:
+          properties:
+            email:
+              type: string
+              example: 'usuario@email.com'
+              required: true
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Mail sent successfully
+      404:
+        description: Not found
+/api/v1/resetPassword:
+  post:
+    tags:
+      - Auth
+    security: []
+    description: Reset password after receiving email
+    parameters:
+      - name: new password
+        in:  body
+        required: true
+        schema:
+          properties:
+            email:
+              type: string
+              example: 'admin'
+              required: true
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Password changed successfully
+      401:
+        description: Not authorized

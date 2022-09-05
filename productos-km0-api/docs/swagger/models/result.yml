@@ -1,0 +1,9 @@
+components:
+  schemas:
+    Result:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+          example: 1
