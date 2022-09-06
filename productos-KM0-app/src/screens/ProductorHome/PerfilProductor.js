@@ -14,6 +14,10 @@ const PerfilProductor = () => {
         console.log('session quitada para probar inicio de sesion')
     }
 
+    const removeHandlerTutorial = async () => {
+        await AsyncStorage.removeItem('$unboardingProductor')
+    }
+
     const logoutHandler = () => {
         navigation.navigate('Login')
         distpach(userAction.logOutHandler());
@@ -24,7 +28,12 @@ const PerfilProductor = () => {
             <TouchableOpacity
                 onPress={removeHandler}
             >
-                <Text>Resetear Local storage</Text>
+                <Text>Resetear Local storage Sliders</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={removeHandlerTutorial}
+            >
+                <Text>Resetear Local storage Tutotial</Text>
             </TouchableOpacity>
 
             <TouchableOpacity

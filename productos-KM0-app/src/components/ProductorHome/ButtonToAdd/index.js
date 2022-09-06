@@ -1,29 +1,40 @@
-import { Dimensions } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import ButtonToAddStyle from "./style";
+import { Dimensions, TouchableOpacity, StyleSheet } from "react-native";
+import { AntDesign } from '@expo/vector-icons';
 import { colors } from "../../../themes";
 
 const heightScreen = Dimensions.get("screen").height;
 
-
 const ButtonToAdd = (porps) => {
-    const Style =ButtonToAddStyle
   return (
     <>
-      <Ionicons
-        name="ios-add-circle-sharp"
-        size={heightScreen * 0.09}
-        color={colors.gradientOrange.primary}
-        style={Style.buttonToAdd}
-      />
-      <Ionicons
-        name="ellipse"
-        size={heightScreen * 0.09}
-        color={colors.textPrimary}
-        style={Style.buttonToAdd2}
-      />
+      
+      <TouchableOpacity 
+        activeOpacity={0.4}
+        style={styles.buttonContainer}
+      >
+        <AntDesign
+          name="plus"
+          size={50}
+          color={'white'}
+        />
+      </TouchableOpacity>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    backgroundColor: '#FF8F15',
+    height: 80,
+    width: 80,
+    zIndex: 5,
+    position: 'absolute',
+    bottom: 40,
+    right: 15,
+    borderRadius: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
 
 export default ButtonToAdd;
