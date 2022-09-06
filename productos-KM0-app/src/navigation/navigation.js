@@ -8,6 +8,7 @@ import Buyer from '../screens/Buyer'
 import Calendar from '../screens/Calendar'
 import Chat from '../screens/Chat'
 import Perfil from '../screens/Perfil'
+import ChatCompradorNavigator from './ChatComprador/ChatCompradorNavigator'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 // const TopTab = createMaterialTopTabNavigator()
@@ -63,7 +64,7 @@ function Tabs () {
       />
       <Tab.Screen
         name="Chat"
-        component={Chat}
+        component={ChatCompradorNavigator}
         options={{
           tabBarLabel: 'Chat',
           tabBarIcon: ({ color, size }) => (

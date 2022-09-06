@@ -6,7 +6,7 @@ import { IndexBuyer } from '../modules/buyer'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Calendar from '../screens/Calendar'
 import PerfilComprador from '../screens/Perfil'
-
+import ChatCompradorNavigator from '../navigation/ChatComprador/ChatCompradorNavigator'
 const Buyer = () => {
   const Tab = createBottomTabNavigator()
   const withScreen = Dimensions.get('window').width
@@ -38,7 +38,7 @@ const Buyer = () => {
             tabBarLabel: 'Inicio',
             tabBarIcon: ({ color, size }) => (
               <Icon name="home-outline" size={35} color={color} />
-            ),
+            )
           }}
         />
         <Tab.Screen
@@ -48,17 +48,18 @@ const Buyer = () => {
             tabBarLabel: 'Calendario',
             tabBarIcon: ({ color, size }) => (
               <Icon name="calendar-outline" size={35} color={color} />
-            ),
+            )
           }}
         />
         <Tab.Screen
           name="Chat"
-          component={Chat}
+          component={ChatCompradorNavigator}
           options={{
             tabBarLabel: 'Chat',
             tabBarIcon: ({ color, size }) => (
               <Icon name="chatbox-ellipses-outline" size={35} color={color} />
             ),
+            headerShown: false
           }}
         />
         <Tab.Screen
@@ -68,7 +69,7 @@ const Buyer = () => {
             tabBarLabel: 'Perfil',
             tabBarIcon: ({ color, size }) => (
               <Icon name="person-outline" size={35} color={color} />
-            ),
+            )
           }}
         />
       </Tab.Navigator>
