@@ -1,0 +1,22 @@
+components:
+  schemas:
+    Calendar:
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        date:
+          type: dateTime
+          example: "2022-06-25 16:00"
+        sellerId:
+          type: integer
+          format: int64
+          example: 1
+        buyerId:
+          type: integer
+          format: int64
+          example: 2
+        address:
+          type: string
+          example: "Calle ejemplo, 1"

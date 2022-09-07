@@ -9,8 +9,11 @@ import {
   BelongsTo,
   manyToMany,
   ManyToMany,
+  hasMany,
+  HasMany
 } from '@ioc:Adonis/Lucid/Orm'
 import Product from './Product'
+import Calendar from './Calendar'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -59,6 +62,9 @@ export default class User extends BaseModel {
     pivotColumns: ['price', 'status', 'stock'],
   })
   public products: ManyToMany<typeof Product>
+
+  @hasMany(() => Calendar, { foreignKey: 'sellerId' })
+  public calendar: HasMany<typeof Calendar>
 
   @column()
   public status: boolean
