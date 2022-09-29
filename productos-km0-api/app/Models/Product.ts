@@ -17,7 +17,7 @@ export default class Product extends BaseModel {
   public description: string
 
   @column()
-  public category: typeof Category
+  public category: Category
 
   @manyToMany(() => User, {
     localKey: 'id',
