@@ -7,6 +7,8 @@
 
 import Env from '@ioc:Adonis/Core/Env'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
+const Url = require('url-parse')
+const DATABASE_URL = new Url(Env.get('DATABASE_URL'))
 
 const databaseConfig: DatabaseConfig = {
   /*
@@ -47,6 +49,41 @@ const databaseConfig: DatabaseConfig = {
       },
       healthCheck: false,
       debug: true,
+    },
+    db_url: {
+      client: 'pg',
+      connection: {
+        host: Env.get('PG_HOST', DATABASE_URL.hostname),
+        port: Env.get('PG_PORT', DATABASE_URL.port),
+        user: Env.get('PG_USER', DATABASE_URL.username),
+        password: Env.get('PG_PASSWORD', DATABASE_URL.password),
+        database: Env.get('PG_DB_NAME', DATABASE_URL.pathname.substr(1)),
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      },
+      /* replicas: REPLICA_URL ? {
+        read: {
+          connection: [
+            {
+              host: Env.get('PG_HOST', REPLICA_URL.hostname),
+              port: Env.get('PG_PORT', REPLICA_URL.port),
+              user: Env.get('PG_USER', REPLICA_URL.username),
+              password: Env.get('PG_PASSWORD', REPLICA_URL.password),
+              database: Env.get('PG_DB_NAME', REPLICA_URL.pathname.substr(1)),
+              ssl: {
+                rejectUnauthorized: false,
+              },
+            }
+          ]
+        },
+      } : {}, */
+      migrations: {
+        naturalSort: true,
+        disableRollbacksInProduction: true,
+      },
+      healthCheck: false,
+      debug: false,
     },
   },
 }
