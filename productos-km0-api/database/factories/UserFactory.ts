@@ -12,7 +12,7 @@ export default function (type: number) {
     password: faker.internet.password(),
     email: faker.internet.email(),
     address: faker.address.direction(),
-    range_distance: faker.random.numeric(3),
+    range_distance: parseInt(faker.random.numeric(3)),
     picture: faker.image.people(),
     roleId: type,
 
