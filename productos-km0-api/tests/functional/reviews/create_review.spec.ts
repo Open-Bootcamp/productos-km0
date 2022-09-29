@@ -8,5 +8,5 @@ test.group('Reviews creation feature', (group) => {
     return () => Database.rollbackGlobalTransaction()
   })
 
-  test('blabla', async ({ client }) => {}).skip(true)
+  test('blabla', async ({ }) => {}).skip(true)
 })

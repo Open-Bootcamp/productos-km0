@@ -47,7 +47,7 @@ export default class User extends BaseModel {
   public lng: number
 
   @column()
-  public range_distance: string
+  public range_distance: number
 
   @column()
   public picture: string

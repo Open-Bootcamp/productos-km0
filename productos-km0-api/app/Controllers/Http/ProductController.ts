@@ -1,4 +1,3 @@
-import SearchProducts from '../UseCases/SearchProducts'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import CreateProductValidator from 'App/Validators/CreateProductValidator'
 import Product from 'App/Models/Product'
