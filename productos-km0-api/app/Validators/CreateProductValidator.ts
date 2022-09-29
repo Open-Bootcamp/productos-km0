@@ -9,7 +9,7 @@ export default class CreateProductValidator {
     name: schema.string(),
     picture: schema.string(),
     description: schema.string(),
-    category: schema.enum(Object.values(Category)),
+    category: schema.enum.optional(Object.values(Category)),
     status: schema.boolean.optional(),
   })
 

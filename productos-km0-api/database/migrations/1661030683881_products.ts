@@ -1,4 +1,5 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import Category from 'App/Enums/Categories'
 
 export default class extends BaseSchema {
   protected tableName = 'products'
@@ -9,7 +10,7 @@ export default class extends BaseSchema {
       table.string('name', 255)
       table.string('picture', 255)
       table.text('description')
-      table.integer('category', 255)
+      table.enu('category', Object.values(Category)).defaultTo(Category.OTROS).notNullable()
       table.boolean('status')
 
       /**
