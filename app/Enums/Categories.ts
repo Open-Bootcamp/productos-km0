@@ -1,9 +1,7 @@
-enum Category {
-  VERDURAS = 1,
-  FRUTAS = 2,
-  HORTALIZAS = 3,
-  LEGUMBRES = 4,
-  OTROS = 5,
+export enum Category {
+  VERDURAS = 'verduras',
+  FRUTAS = 'frutas',
+  HORTALIZAS = 'hortalizas',
+  LEGUMBRES = 'legumbre',
+  OTROS = 'otros',
 }
-
-export default Category
