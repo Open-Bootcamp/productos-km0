@@ -1,5 +1,5 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
-import Category from 'App/Enums/Categories'
+import { Category } from 'App/Enums/Categories'
 
 export default class extends BaseSchema {
   protected tableName = 'products'

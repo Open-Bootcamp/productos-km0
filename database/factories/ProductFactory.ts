@@ -1,7 +1,7 @@
 import Product from 'App/Models/Product'
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import { DateTime } from 'luxon'
-import Category from 'App/Enums/Categories'
+import { Category } from 'App/Enums/Categories'
 
 export default Factory.define(Product, ({ faker }) => ({
   status: true,

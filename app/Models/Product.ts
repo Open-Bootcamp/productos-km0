@@ -1,7 +1,7 @@
 import User from './User'
 import { DateTime } from 'luxon'
 import { BaseModel, column, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
-import Category from 'App/Enums/Categories'
+import { Category } from 'App/Enums/Categories'
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
