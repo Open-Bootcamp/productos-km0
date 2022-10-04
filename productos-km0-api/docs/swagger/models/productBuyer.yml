@@ -1,0 +1,25 @@
+components:
+  schemas:
+    product_buyer:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      buyer_id:
+        type: integer
+        format: int64
+        example: 1
+      product_id:
+        type: integer
+        format: int64
+        example: 1
+      totalPrice:
+        type: double
+        example: 2.5
+      quantity:
+        type: integer
+        format: int64
+        example: 2
+      status:
+        type: boolean
+        example: true

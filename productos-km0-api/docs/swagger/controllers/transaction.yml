@@ -1,0 +1,107 @@
+/api/v1/transactions:
+  get:
+    tags:
+      - Transaction
+    security: []
+    description: List All Transactions
+    parameters:
+      - name: page
+        in: query
+        description: "Page to be listed"
+        required: false
+      - name: size
+        in: query
+        description: "Size per page to be listed"
+        required: false
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Transactions list
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                meta:
+                  type: object
+                  $ref: "#/components/schemas/Result"
+                data:
+                  type: object
+                  items:
+                  $ref: "#/components/schemas/product_buyer"
+      401:
+        description: Unauthorized
+/api/v1/{userId}/transactions:
+  post:
+    tags:
+      - Transaction
+    security: []
+    description: Create product sale
+    parameters:
+      - name: id
+        in: query
+        description: "User id buys the product"
+        required: true
+      - name: Request
+        in: body
+        required: true
+        schema:
+          properties:
+            product_id:
+              type: number
+              example: 1
+            price:
+              type: number
+              example: 2.5
+            quantity:
+              type: number
+              example: 2
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Transaction created
+/api/v1/transactions/{id}:
+  get:
+    tags:
+      - Transaction
+    security: []
+    description: List Transaction by ID
+    parameters:
+      - name: id
+        in: query
+        description: "Transaction id to be listed"
+        required: true
+    produces:
+      - application/jsons
+    responses:
+      200:
+        description: Return Transaction by id
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/product_buyer"
+      401:
+        description: Unauthorized
+      404:
+        description: Transaction not found
+    delete:
+      tags:
+        - Transaction
+      security: []
+      description: Delete existing Transaction
+      parameters:
+        - name: id
+          in: query
+          description: "Transaction id to be delete"
+          required: true
+      produces:
+        - application/jsons
+      responses:
+        200:
+          description: Transaction delete successfully
+        401:
+          description: Unauthorized
+        404:
+          description: Transaction not found
