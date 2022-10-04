@@ -63,6 +63,17 @@ export default class User extends BaseModel {
   })
   public products: ManyToMany<typeof Product>
 
+  @manyToMany(() => Product, {
+    localKey: 'id',
+    pivotForeignKey: 'buyer_id',
+    relatedKey: 'id',
+    pivotRelatedForeignKey: 'product_id',
+    pivotTable: 'product_buyer',
+    pivotTimestamps: true,
+    pivotColumns: ['totalPrice', 'status', 'quantity'],
+  })
+  public productBuyer: ManyToMany<typeof Product>
+
   @hasMany(() => Calendar, { foreignKey: 'sellerId' })
   public calendar: HasMany<typeof Calendar>
 
